@@ -1,3 +1,6 @@
+// const baseDir = process.env.BASE_DIR || '/'
+// const baseUrl = process.env.BASE_URL || 'http://localhost:3000'
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -38,7 +41,22 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    'nuxt-fontawesome', 
   ],
+
+  fontawesome: {
+    component: "fa",
+    imports: [
+      {
+        set: "@fortawesome/free-solid-svg-icons", // Solid
+        icons: ["faHome", "faCaretRight"],
+      },
+      {
+        set: "@fortawesome/free-brands-svg-icons", // Brand
+        icons: ["faTwitter","faGoogle"],
+      },
+    ],
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

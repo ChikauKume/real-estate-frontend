@@ -1,7 +1,7 @@
 <template>
     <div>
         <Nav/>
-        <div class="py-10">
+        <div>
             <Nuxt/>
         </div>
         <div class="footer">
@@ -28,6 +28,12 @@ export default {
     .border-navy{
         border-style: solid;
         border-color:#04384c
+    }
+    .bg-violet{
+        background:#a94335;
+    }
+    .bg-register{
+        background:#4ea30a;
     }
     hr{
         height: 1px;

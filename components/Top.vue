@@ -23,7 +23,6 @@
                     :draggable="false"
                     :icon="markerOptions"
                     @click="toggleInfoWindow(m,index)"
-                    @mouseover="toggleInfoWindow(m,index)"
                 />
             </GmapMap>
         </div>
@@ -160,45 +159,46 @@ export default {
         success (position) {
             this.maplocation.lat = position.coords.latitude
             this.maplocation.lng = position.coords.longitude
+            const infoText = 
+                '<div>'+
+                    '<div>'+
+                        '<div class="pb-4 flex space-x-4">'+
+                            '<span class="bg-navy-blue text-white text-bold text-xs flex items-center px-2 rounded">新築マンション</span>'+
+                            '<span class="text-lg">レジデンス白潟 A000B/ 2階</span>'+
+                        '</div>'+
+                        '<div class="flex">'+
+                            '<img src="/image/first-view.jpeg" class="w-1/3 rounded">'+
+                            '<div class="desc pl-2 w-full">'+
+                                '<table class="table-auto">'+
+                                    '<tbody>'+
+                                        '<tr>'+
+                                            '<td class="border text-xs p-2">賃料/管理費等</td>'+
+                                            '<td class="border text-xs p-2 font-extrabold text-red-700">8.5万</td>'+
+                                        '</tr>'+
+                                        '<tr>'+
+                                            '<td class="border text-xs p-2">所在地</td>'+
+                                            '<td class="border text-xs p-2">島根県松江市菅田町332-3</td>'+
+                                        '</tr>'+
+                                            '<td class="border text-xs p-2">交通</td>'+
+                                            '<td class="border text-xs p-2">JR山陰本線 松江駅 徒歩10分</td>'+
+                                        '</tr>'+
+                                        '<tr>'+
+                                            '<td class="border text-xs p-2">専有面積/間取り</td>'+
+                                            '<td class="border text-xs p-2">18.15m² / 1K</td>'+
+                                        '</tr>'+       
+                                    '</tbody>'+
+                                '</table>'+
+                            '</div>'+
+                        '</div>'+
+                        '<div class="mt-4">'+
+                            '<button type="button" class="w-full bg-navy-blue text-white text-extrabold px-2 h-10 rounded">この物件を見る</button>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>'
             this.markers =  [
                 {
                     position: { lat: 35.7668603, lng: 139.7719506 },
-                    infoText: 
-                        '<div>'+
-                            '<div>'+
-                                '<div class="pb-4 flex space-x-4">'+
-                                    '<span class="bg-navy-blue text-white text-bold text-xs flex items-center px-2 rounded">新築マンション</span>'+
-                                    '<span class="text-lg">レジデンス白潟 A000B/ 2階</span>'+
-                                '</div>'+
-                                '<div class="flex">'+
-                                    '<img src="/image/first-view.jpeg" class="w-1/3 rounded">'+
-                                    '<div class="desc pl-2 w-full">'+
-                                        '<table class="table-auto">'+
-                                            '<tbody>'+
-                                                '<tr>'+
-                                                    '<td class="border text-xs p-2">賃料/管理費等</td>'+
-                                                    '<td class="border text-xs p-2 font-extrabold text-red-700">8.5万</td>'+
-                                                '</tr>'+
-                                                '<tr>'+
-                                                    '<td class="border text-xs p-2">所在地</td>'+
-                                                    '<td class="border text-xs p-2">島根県松江市菅田町332-3</td>'+
-                                                '</tr>'+
-                                                    '<td class="border text-xs p-2">交通</td>'+
-                                                    '<td class="border text-xs p-2">JR山陰本線 松江駅 徒歩10分</td>'+
-                                                '</tr>'+
-                                                '<tr>'+
-                                                    '<td class="border text-xs p-2">専有面積/間取り</td>'+
-                                                    '<td class="border text-xs p-2">18.15m² / 1K</td>'+
-                                                '</tr>'+       
-                                            '</tbody>'+
-                                        '</table>'+
-                                    '</div>'+
-                                '</div>'+
-                                '<div class="mt-4">'+
-                                    '<button type="button" class="w-full bg-navy-blue text-white text-extrabold px-2 h-10 rounded">この物件を見る</button>'+
-                                '</div>'+
-                            '</div>'+
-                        '</div>',
+                    infoText: infoText
                 },
             ]
                
