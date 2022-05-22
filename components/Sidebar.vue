@@ -42,59 +42,59 @@
                         </div>
                         <div class="flex flex-wrap text-left">
                             <div class="ui slider checkbox w-full">
-                                <input type="checkbox" @click="change" tabindex="0" checked>
+                                <input type="checkbox" tabindex="0" checked>
                                 <label class="text-sm">ワンルーム</label>
                             </div>
                             <div class="ui slider checkbox w-1/3">
-                                <input type="checkbox" @click="change" tabindex="0">
+                                <input type="checkbox" tabindex="0">
                                 <label class="text-sm">1K</label>
                             </div>
                             <div class="ui slider checkbox w-1/3">
-                                <input type="checkbox" @click="change" tabindex="0">
+                                <input type="checkbox" tabindex="0">
                                 <label class="text-sm">1DK</label>
                             </div>
                             <div class="ui slider checkbox w-1/3">
-                                <input type="checkbox" @click="change" tabindex="0">
+                                <input type="checkbox" tabindex="0">
                                 <label class="text-sm">1LDK</label>
                             </div>
                             <div class="ui slider checkbox w-1/3">
-                                <input type="checkbox" @click="change" tabindex="0">
+                                <input type="checkbox" tabindex="0">
                                 <label class="text-sm">2K</label>
                             </div>
                             <div class="ui slider checkbox w-1/3">
-                                <input type="checkbox" @click="change" tabindex="0">
+                                <input type="checkbox" tabindex="0">
                                 <label class="text-sm">2DK</label>
                             </div>
                             <div class="ui slider checkbox w-1/3">
-                                <input type="checkbox" @click="change" tabindex="0">
+                                <input type="checkbox" tabindex="0">
                                 <label class="text-sm">2LDK</label>
                             </div>
                             <div class="ui slider checkbox w-1/3">
-                                <input type="checkbox" @click="change" tabindex="0">
+                                <input type="checkbox" tabindex="0">
                                 <label class="text-sm">3D</label>
                             </div>
                             <div class="ui slider checkbox w-1/3">
-                                <input type="checkbox" @click="change" tabindex="0">
+                                <input type="checkbox" tabindex="0">
                                 <label class="text-sm">3DK</label>
                             </div>
                             <div class="ui slider checkbox w-1/3">
-                                <input type="checkbox" @click="change" tabindex="0">
+                                <input type="checkbox" tabindex="0">
                                 <label class="text-sm">3LDK</label>
                             </div>
                             <div class="ui slider checkbox w-1/3">
-                                <input type="checkbox" @click="change" tabindex="0">
+                                <input type="checkbox" tabindex="0">
                                 <label class="text-sm">4K</label>
                             </div>
                             <div class="ui slider checkbox w-1/3">
-                                <input type="checkbox" @click="change" tabindex="0">
+                                <input type="checkbox" tabindex="0">
                                 <label class="text-sm">4DK</label>
                             </div>
                             <div class="ui slider checkbox w-1/3">
-                                <input type="checkbox" @click="change" tabindex="0">
+                                <input type="checkbox" tabindex="0">
                                 <label class="text-sm">4LDK</label>
                             </div>
                             <div class="ui slider checkbox">
-                                <input type="checkbox" @click="change" tabindex="0">
+                                <input type="checkbox" tabindex="0">
                                 <label class="text-sm">4LDK以上</label>
                             </div>
                         </div>
@@ -134,11 +134,11 @@
                         </div>
                         <ul>
                             <div class="ui slider checkbox">
-                                <input type="checkbox" @click="change" tabindex="0" checked>
+                                <input type="checkbox" tabindex="0" checked>
                                 <label class="text-sm">新　築</label>
                             </div>
                             <div class="ui slider checkbox">
-                                <input type="checkbox" @click="change" tabindex="0">
+                                <input type="checkbox" tabindex="0">
                                 <label class="text-sm">中　古</label>
                             </div>
                         </ul>
@@ -149,11 +149,11 @@
                         </div>
                         <ul>
                             <div class="ui slider checkbox">
-                                <input type="checkbox" @click="change" tabindex="0" checked>
+                                <input type="checkbox" tabindex="0" checked>
                                 <label class="text-sm">新　築</label>
                             </div>
                             <div class="ui slider checkbox">
-                                <input type="checkbox" @click="change" tabindex="0">
+                                <input type="checkbox" tabindex="0">
                                 <label class="text-sm">中　古</label>
                             </div>
                         </ul>
@@ -164,11 +164,11 @@
                         </div>
                         <ul>
                             <div class="ui slider checkbox">
-                                <input type="checkbox" @click="change" tabindex="0" checked>
+                                <input type="checkbox" tabindex="0" checked>
                                 <label class="text-sm">新　築</label>
                             </div>
                             <div class="ui slider checkbox">
-                                <input type="checkbox" @click="change" tabindex="0">
+                                <input type="checkbox" tabindex="0">
                                 <label class="text-sm">中　古</label>
                             </div>
                         </ul>

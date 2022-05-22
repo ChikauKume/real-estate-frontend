@@ -39,22 +39,24 @@
                         <img src="/image/first-view.jpeg" class="w-1/3 rounded">
                         <div class="desc px-4">
                             <table class="table-auto">
-                                <tr>
-                                    <td class="border text-xs px-4 py-2">賃料/管理費等</td>
-                                    <td class="border text-sm px-4 py-2 font-extrabold text-red-700">8.5万</td>
-                                </tr>
-                                <tr>
-                                    <td class="border text-xs px-4 py-2">所在地</td>
-                                    <td class="border text-sm px-4 py-2">島根県松江市菅田町332-3</td>
-                                </tr>
-                                <tr>
-                                    <td class="border text-xs px-4 py-2">交通</td>
-                                    <td class="border text-sm px-4 py-2">JR山陰本線 松江駅 徒歩10分</td>
-                                </tr>
-                                <tr>
-                                    <td class="border text-xs px-4 py-2">専有面積/間取り</td>
-                                    <td class="border text-sm px-4 py-2">18.15m² / 1K</td>
-                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td class="border text-xs px-4 py-2">賃料/管理費等</td>
+                                        <td class="border text-sm px-4 py-2 font-extrabold text-red-700">8.5万</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border text-xs px-4 py-2">所在地</td>
+                                        <td class="border text-sm px-4 py-2">島根県松江市菅田町332-3</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border text-xs px-4 py-2">交通</td>
+                                        <td class="border text-sm px-4 py-2">JR山陰本線 松江駅 徒歩10分</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border text-xs px-4 py-2">専有面積/間取り</td>
+                                        <td class="border text-sm px-4 py-2">18.15m² / 1K</td>
+                                    </tr>       
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -72,22 +74,24 @@
                         <img src="/image/first-view.jpeg" class="w-1/3 rounded">
                         <div class="desc px-4">
                             <table class="table-auto">
-                                <tr>
-                                    <td class="border text-xs px-4 py-2">賃料/管理費等</td>
-                                    <td class="border text-sm px-4 py-2 font-extrabold text-red-700">8.5万</td>
-                                </tr>
-                                <tr>
-                                    <td class="border text-xs px-4 py-2">所在地</td>
-                                    <td class="border text-sm px-4 py-2">島根県松江市菅田町332-3</td>
-                                </tr>
-                                <tr>
-                                    <td class="border text-xs px-4 py-2">交通</td>
-                                    <td class="border text-sm px-4 py-2">JR山陰本線 松江駅 徒歩10分</td>
-                                </tr>
-                                <tr>
-                                    <td class="border text-xs px-4 py-2">専有面積/間取り</td>
-                                    <td class="border text-sm px-4 py-2">18.15m² / 1K</td>
-                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td class="border text-xs px-4 py-2">賃料/管理費等</td>
+                                        <td class="border text-sm px-4 py-2 font-extrabold text-red-700">8.5万</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border text-xs px-4 py-2">所在地</td>
+                                        <td class="border text-sm px-4 py-2">島根県松江市菅田町332-3</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border text-xs px-4 py-2">交通</td>
+                                        <td class="border text-sm px-4 py-2">JR山陰本線 松江駅 徒歩10分</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border text-xs px-4 py-2">専有面積/間取り</td>
+                                        <td class="border text-sm px-4 py-2">18.15m² / 1K</td>
+                                    </tr>       
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -105,22 +109,24 @@
                         <img src="/image/first-view.jpeg" class="w-1/3 rounded">
                         <div class="desc px-4">
                             <table class="table-auto">
-                                <tr>
-                                    <td class="border text-xs px-4 py-2">賃料/管理費等</td>
-                                    <td class="border text-sm px-4 py-2 font-extrabold text-red-700">8.5万</td>
-                                </tr>
-                                <tr>
-                                    <td class="border text-xs px-4 py-2">所在地</td>
-                                    <td class="border text-sm px-4 py-2">島根県松江市菅田町332-3</td>
-                                </tr>
-                                <tr>
-                                    <td class="border text-xs px-4 py-2">交通</td>
-                                    <td class="border text-sm px-4 py-2">JR山陰本線 松江駅 徒歩10分</td>
-                                </tr>
-                                <tr>
-                                    <td class="border text-xs px-4 py-2">専有面積/間取り</td>
-                                    <td class="border text-sm px-4 py-2">18.15m² / 1K</td>
-                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td class="border text-xs px-4 py-2">賃料/管理費等</td>
+                                        <td class="border text-sm px-4 py-2 font-extrabold text-red-700">8.5万</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border text-xs px-4 py-2">所在地</td>
+                                        <td class="border text-sm px-4 py-2">島根県松江市菅田町332-3</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border text-xs px-4 py-2">交通</td>
+                                        <td class="border text-sm px-4 py-2">JR山陰本線 松江駅 徒歩10分</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border text-xs px-4 py-2">専有面積/間取り</td>
+                                        <td class="border text-sm px-4 py-2">18.15m² / 1K</td>
+                                    </tr>       
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -138,22 +144,24 @@
                         <img src="/image/first-view.jpeg" class="w-1/3 rounded">
                         <div class="desc px-4">
                             <table class="table-auto">
-                                <tr>
-                                    <td class="border text-xs px-4 py-2">賃料/管理費等</td>
-                                    <td class="border text-sm px-4 py-2 font-extrabold text-red-700">8.5万</td>
-                                </tr>
-                                <tr>
-                                    <td class="border text-xs px-4 py-2">所在地</td>
-                                    <td class="border text-sm px-4 py-2">島根県松江市菅田町332-3</td>
-                                </tr>
-                                <tr>
-                                    <td class="border text-xs px-4 py-2">交通</td>
-                                    <td class="border text-sm px-4 py-2">JR山陰本線 松江駅 徒歩10分</td>
-                                </tr>
-                                <tr>
-                                    <td class="border text-xs px-4 py-2">専有面積/間取り</td>
-                                    <td class="border text-sm px-4 py-2">18.15m² / 1K</td>
-                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td class="border text-xs px-4 py-2">賃料/管理費等</td>
+                                        <td class="border text-sm px-4 py-2 font-extrabold text-red-700">8.5万</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border text-xs px-4 py-2">所在地</td>
+                                        <td class="border text-sm px-4 py-2">島根県松江市菅田町332-3</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border text-xs px-4 py-2">交通</td>
+                                        <td class="border text-sm px-4 py-2">JR山陰本線 松江駅 徒歩10分</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border text-xs px-4 py-2">専有面積/間取り</td>
+                                        <td class="border text-sm px-4 py-2">18.15m² / 1K</td>
+                                    </tr>       
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -171,22 +179,24 @@
                         <img src="/image/first-view.jpeg" class="w-1/3 rounded">
                         <div class="desc px-4">
                             <table class="table-auto">
-                                <tr>
-                                    <td class="border text-xs px-4 py-2">賃料/管理費等</td>
-                                    <td class="border text-sm px-4 py-2 font-extrabold text-red-700">8.5万</td>
-                                </tr>
-                                <tr>
-                                    <td class="border text-xs px-4 py-2">所在地</td>
-                                    <td class="border text-sm px-4 py-2">島根県松江市菅田町332-3</td>
-                                </tr>
-                                <tr>
-                                    <td class="border text-xs px-4 py-2">交通</td>
-                                    <td class="border text-sm px-4 py-2">JR山陰本線 松江駅 徒歩10分</td>
-                                </tr>
-                                <tr>
-                                    <td class="border text-xs px-4 py-2">専有面積/間取り</td>
-                                    <td class="border text-sm px-4 py-2">18.15m² / 1K</td>
-                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td class="border text-xs px-4 py-2">賃料/管理費等</td>
+                                        <td class="border text-sm px-4 py-2 font-extrabold text-red-700">8.5万</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border text-xs px-4 py-2">所在地</td>
+                                        <td class="border text-sm px-4 py-2">島根県松江市菅田町332-3</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border text-xs px-4 py-2">交通</td>
+                                        <td class="border text-sm px-4 py-2">JR山陰本線 松江駅 徒歩10分</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border text-xs px-4 py-2">専有面積/間取り</td>
+                                        <td class="border text-sm px-4 py-2">18.15m² / 1K</td>
+                                    </tr>       
+                                </tbody>
                             </table>
                         </div>
                     </div>
