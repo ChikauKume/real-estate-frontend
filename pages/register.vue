@@ -101,20 +101,23 @@ export default {
             window.open(url+path, '_blank');
         },
 
-        async submit(){
+       async submit(){
             try{
-                await this.$axios.$post('register', this.form)
-                await this.$auth.login({
-                    data: {
-                        email: this.form.email,
-                        password: this.form.password,
-                    }
-                })
+                const res = await this.$axios.$post('/register', this.form)
+                console.log(res)
+                // await this.$auth.login({
+                //     data: {
+                //         email: this.form.email,
+                //         password: this.form.password,
+                //     }
+                // })
 
                 // redirect
-                this.$router.push({
-                    path: this.$route.query.redirect || '/home'
-                })
+                // this.$router.push({
+                //     path: this.$route.query.redirect || '/'
+                // })
+                // window.location = "http://localhost:3000";
+
             }
             catch(err){
                 console.log(err)

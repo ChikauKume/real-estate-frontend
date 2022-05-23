@@ -1,8 +1,6 @@
-// const baseDir = process.env.BASE_DIR || '/'
-// const baseUrl = process.env.BASE_URL || 'http://localhost:3000'
+const { API_URL } = process.env;
 
 export default {
-  // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Real Estate',
     htmlAttrs: {
@@ -19,30 +17,30 @@ export default {
     ]
   },
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
 
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    {
-      src: '~/plugins/vue2-google-maps.js'
-    }
+    { src: '~/plugins/vue2-google-maps.js' },
+    { src: '~/plugins/axios.js' },
   ],
 
-  // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
   ],
 
-  // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios',
     'nuxt-fontawesome', 
+    '@nuxtjs/proxy'
   ],
+
+  env: {
+    API_URL,
+  },
 
   fontawesome: {
     component: "fa",
@@ -57,8 +55,17 @@ export default {
       },
     ],
   },
+  
+  axios: { 
+    // proxy: true,
+    baseURL: 'http://localhost/api',
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
+  },
+  
+  // proxy: {
+  //   '/api': process.env.API_URL,
+  // },
+
   build: {
     transpile: [/^vue2-google-maps($|\/)/]
   }
