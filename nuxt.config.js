@@ -1,5 +1,3 @@
-const { API_URL } = process.env;
-
 export default {
   head: {
     title: 'Real Estate',
@@ -10,7 +8,7 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -34,13 +32,10 @@ export default {
 
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/auth',
     'nuxt-fontawesome', 
     '@nuxtjs/proxy'
   ],
-
-  env: {
-    API_URL,
-  },
 
   fontawesome: {
     component: "fa",
@@ -57,14 +52,32 @@ export default {
   },
   
   axios: { 
-    // proxy: true,
     baseURL: 'http://localhost/api',
 
   },
-  
-  // proxy: {
-  //   '/api': process.env.API_URL,
-  // },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: "/login",
+            method: "post",
+            propertyName: "meta.token"
+          },
+          user: {
+            url: "user",
+            method: "get",
+            propertyName: false
+          },
+          logout: {
+            url: "logout",
+            method: "post"
+          }
+        }
+      }
+    }
+  },
 
   build: {
     transpile: [/^vue2-google-maps($|\/)/]

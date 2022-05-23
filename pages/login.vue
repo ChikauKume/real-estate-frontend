@@ -15,27 +15,26 @@
                     </button>
 
                     <form @submit.prevent="submit">
-                        <input 
-                            type="text"
-                            v-model.trim="form.name"
-                            class="block border border-grey-light w-full p-3 rounded mb-4"
-                            name="fullname"
-                            placeholder="Full Name" />
-
-                        <input 
-                            type="text"
-                            v-model.trim="form.email"
-                            class="blo\ck border border-grey-light w-full p-3 rounded mb-4"
-                            name="email"
-                            placeholder="Email" />
-
-                        <input 
-                            type="password"
-                            v-model.trim="form.password"
-                            class="block border border-grey-light w-full p-3 rounded mb-4"
-                            name="password"
-                            placeholder="Password" />
-
+                        <div>
+                            <input 
+                                type="text"
+                                v-model.trim="form.email"
+                                class="blo\ck border border-grey-light w-full p-3 rounded mb-4"
+                                name="email"
+                                placeholder="Email" />
+                            <!-- <small class="form-text text-danger" v-if="errors.email">{{ errors.email[0] }}</small> -->
+                        </div>
+                        
+                        <div>
+                            <input 
+                                type="password"
+                                v-model.trim="form.password"
+                                class="block border border-grey-light w-full p-3 rounded mb-4"
+                                name="password"
+                                placeholder="Password" />
+                                <!-- <small class="form-text text-danger" v-if="errors.password">{{ errors.password[0] }}</small> -->
+                        </div>
+ 
                         <button
                             type="submit"
                             class="w-full text-center py-3 rounded bg-register text-white hover:bg-green-dark focus:outline-none my-1"
@@ -51,33 +50,24 @@
 </template>
 
 <script>
-import Nav from '@/components/Nav'
 export default {
-    components:{Nav},
+
+    // middleware: ['guest'],
+
     data(){
         return {
             form:{
-                name: 'test',
                 email: 'test@gmail.com',
                 password: 'password',
-                password_confirmation: 'password',
             }
         }
     },
     methods:{
         async submit(){
             try{
-                await this.$axios.$post('register', this.form)
-                await this.$auth.login({
-                    data: {
-                        email: this.form.email,
-                        password: this.form.password,
-                    }
-                })
-
-                // redirect
+                await this.$auth.login({data: this.form})
                 this.$router.push({
-                    path: this.$route.query.redirect || '/home'
+                    path: this.$route.query.redirect || '/'
                 })
             }
             catch(err){

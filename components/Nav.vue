@@ -13,12 +13,23 @@
         cursor-pointer py-2 px-3 cursor-pointer">ログイン</nuxt-link>
             </div>
         </div>
+        <ul class="navbar-nav ml-auto">
+            <!-- <li class="nav-item">
+                <a class="nav-link">{{ user.name }}</a>
+            </li> -->
+            <li class="nav-item">
+                <button @click.prevent="logout" class="nav-link">Logout</button>
+            </li>
+        </ul>
     </div>
 </template>
 
 <script>
 export default {
     methods:{
+        logout(){
+            this.$auth.logout()
+        }
     }
 }
 </script>
