@@ -1,10 +1,13 @@
 <template>
-  <div class="w-full px-56">
-    <Top/>
-    <div class="body flex space-x-10 mt-10">
-      <Sidebar/>
-      <div class="house-list w-full">
-        <Main/>
+  <div>
+    <Nav/>
+    <div class="w-full px-56">
+      <Top/>
+      <div class="body flex space-x-10 mt-10">
+        <Sidebar/>
+        <div class="house-list w-full">
+          <Main/>
+        </div>
       </div>
     </div>
   </div>

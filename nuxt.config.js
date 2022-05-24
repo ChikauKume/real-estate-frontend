@@ -34,7 +34,8 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/auth',
     'nuxt-fontawesome', 
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    '@nuxtjs/vuetify',
   ],
 
   fontawesome: {
