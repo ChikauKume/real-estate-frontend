@@ -36,31 +36,50 @@
       >
         <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
       </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
       <v-toolbar-title v-text="title" />
       <v-spacer />
       <v-btn
         icon
         @click.stop="rightDrawer = !rightDrawer"
       >
-        <v-icon>mdi-menu</v-icon>
       </v-btn>
     </v-app-bar>
     <v-main>
-      <v-container>
+        <div class="p-10">
+
+            <div class="text-2xl mb-5">不動産管理</div>
+
+            <div class="border w-5/6 border-gray-300 shadow rounded p-4 mb-5">
+                <div>
+                    <div class="flex space-x-4">
+                        <img src="/image/first-view.jpeg" class="w-1/12 rounded">
+                        <div class="flex w-full">
+                            <span class="flex items-center text-lg">レジデンス白潟 A000B/ 2階</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <button class="py-1 bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 rounded">
+                                Edit
+                            </button>
+                            <button class="py-1 bg-red-500 hover:bg-red-700 text-white font-bold px-4 rounded">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <v-data-table
+                :headers="headers"
+                :items="contents"
+                class="elevation-1"
+            >
+                <template slot="item.delete" slot-scope="props">
+                    <v-btn class="mx-2" icon @click="() => delete(props.item)">
+                        <v-icon dark>mdi-delete</v-icon>
+                    </v-btn>
+                </template>
+            </v-data-table>
+        </div>
         <Nuxt />
-      </v-container>
     </v-main>
     <v-navigation-drawer
       v-model="rightDrawer"
@@ -68,51 +87,74 @@
       temporary
       fixed
     >
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
     </v-navigation-drawer>
     <v-footer
       :absolute="!fixed"
       app
     >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+      <span class="w-full text-center">&copy; {{ new Date().getFullYear() }} {{title}}</span>
     </v-footer>
   </v-app>
 </template>
 
 <script>
 export default {
-  name: 'DefaultLayout',
-  data () {
-    return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
+    name: 'DefaultLayout',
+    data () {
+        return {
+            clipped: false,
+            drawer: false,
+            fixed: false,
+            items: [
+                {
+                    icon: 'mdi-home-city',
+                    title: 'Real Estate',
+                    to: '/real-estates'
+                },
+                {
+                    icon: 'mdi-account',
+                    title: 'User',
+                    to: '/users'
+                },
+                {
+                    icon: 'mdi-email',
+                    title: 'Inquiry',
+                    to: '/inquiries'
+                },
+            ],
+            headers: [
+                // Dynamic headers
+                {
+                    text: 'Name',
+                    value: 'name'
+                },
+                {
+                    text: '',
+                    // Row to replace the original template
+                    value: 'delete'
+                },
+            ],
+            contents: [
+                {
+                    id: 1,
+                    name: 'A'
+                },
+                {
+                    id: 2,
+                    name: 'B'
+                }
+            ],
+            miniVariant: false,
+            right: true,
+            rightDrawer: false,
+            title: 'Mike Real Estate'
         }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+    },
+    methods: {
+        // 表示ボタンが押下された時に呼び出される。
+        onClickShow(item) {
+            console.log(`${item.name}:${item.price}`);
+        },
     }
-  }
 }
 </script>
