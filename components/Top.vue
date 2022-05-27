@@ -29,7 +29,7 @@
         <div class="desc px-8">
             <div class="title text-3xl mb-5 flex">
                 <img src="/image/home.png" class="rounded-md outline outline-1 w-1/6">
-                <span class="flex items-center ml-5">住まいを探す</span>
+                <span class="flex items-center ml-5 text-">住まいを探す</span>
             </div>
             <div class="pb-5">
                 <div class="text-lg font-semibold">1.場所を選択</div>

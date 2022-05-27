@@ -1,8 +1,10 @@
 <template>
     <div>
+        <Nav/>
         <div>
             <Nuxt/>
         </div>
+        <Footer/>
     </div>
 </template>
 
@@ -16,25 +18,3 @@ export default {
   }
 }
 </script>
-
-<style>
-    .bg-navy-blue{
-        background: #04384c;
-    }
-    .border-navy{
-        border-style: solid;
-        border-color:#04384c
-    }
-    .bg-violet{
-        background:#a94335;
-    }
-    .bg-register{
-        background:#4ea30a;
-    }
-    hr{
-        height: 1px;
-        background-color: #04384c;
-        border: none;
-        color: #04384c;
-    }
-</style>

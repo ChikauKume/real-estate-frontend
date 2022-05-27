@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Nav/>
     <div class="w-full px-56">
       <Top/>
       <div class="body flex space-x-10 mt-10">
@@ -9,9 +8,6 @@
           <Main/>
         </div>
       </div>
-    </div>
-    <div class="footer">
-      <Footer/>
     </div>
   </div>
 </template>

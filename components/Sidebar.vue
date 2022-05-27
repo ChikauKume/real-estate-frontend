@@ -1,8 +1,8 @@
 <template>
-    <div class="sidebar w-1/5">
+    <div class="sidebar w-1/4">
         <div>
             <div class="bg-navy-blue text-white rounded font-semibold text-center">物件の条件</div>
-            <div class="mb-5 border-l border-gray-400 py-1 px-4 mt-3">
+            <div class="mb-5 border-l border-gray-400 py-1 pl-4 mt-3">
                 <div>
                     <div class="mt-2">
                         <div class="ui slider checkbox">
@@ -11,7 +11,7 @@
                         <ul class="flex space-x-1">
                             <div class="ui slider checkbox py-1">
                                 <select name="min" id="min_bill"
-                                class="border border-gray-500 rounded text-sm">
+                                class="border-solid border-2 border-gray-200 rounded p-1 text-sm">
                                     <option value="0">下限なし</option>
                                     <option value="1">3.0万円</option>
                                     <option value="2">3.5万円</option>
