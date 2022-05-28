@@ -1,10 +1,10 @@
 <template>
-    <div>
+    <div class="flex flex-col min-h-screen">
         <Nav/>
-        <div>
+        <div class="container mx-auto px-20">
             <Nuxt/>
         </div>
-        <Footer/>
+        <Footer class="flex items-end"/>
     </div>
 </template>
 

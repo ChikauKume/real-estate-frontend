@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="w-full px-56">
+    <div class="w-full px-10">
       <Top/>
       <div class="body flex space-x-10 mt-10">
         <Sidebar/>

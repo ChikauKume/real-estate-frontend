@@ -1,4 +1,5 @@
 module.exports = {
+  content: ['./src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js'],
   purge: [
     './components/**/*.{vue,js}',
     './layouts/**/*.vue',
@@ -13,13 +14,26 @@ module.exports = {
         'navy-blue':'#04384c',
         'violet':'#a94335',
         'submit-btn': '#4ea30a',
-        'white': '#ffffff',
+        'light-gray': '#F6F9F9',
+        'orange': 'rgb(234 88 22)',
+        'gray': '#bdc8ca',
+      },
+      borderWidth: {
+        DEFAULT: '1px',
+        '0': '0',
+        '2': '2px',
+        '3': '3px',
+        '4': '4px',
+        '6': '6px',
+        '8': '8px',
       }
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('tw-elements/dist/plugin')
+  ],
   important: true,
 }

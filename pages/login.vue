@@ -4,7 +4,7 @@
             <div class="container max-w-md mx-auto flex-1 flex flex-col mt-10 px-2 w-2/3">
                 <div class="px-6 w-full">
 
-                    <h1 class="mb-8 text-3xl text-center">ログイン</h1>
+                    <h1 class="mb-6 text-3xl text-center">ログイン</h1>
                     
                     <!-- <button
                         type="submit"
@@ -22,22 +22,7 @@
                                 <fa :icon="['fab', 'google']" />
                                 <span>Google アカウントでログイン</span>
                             </button> -->
-                            <!-- <v-alert
-                                dense
-                                outlined
-                                type="error"
-                                class="text-red-700"
-                            >
-                                error message here
-                            </v-alert>
-                            <v-alert
-                                dense
-                                outlined
-                                type="error"
-                                class="text-red-700"
-                            >
-                                error message here
-                            </v-alert> -->
+
                             <v-row>
                                 <v-col>
                                     <v-text-field
@@ -60,7 +45,7 @@
                                 <v-col>
                                     <button
                                         type="submit"
-                                        class="w-full text-center py-3 rounded bg-submit-btn text-white hover:bg-green-dark focus:outline-none my-1"
+                                        class="w-full text-center font-semibold py-3 rounded bg-submit-btn text-white hover:bg-green-dark focus:outline-none my-1"
                                     >ログイン</button>        
                                     <div class="text-grey-dark mt-6">
                                         アカウントをお持ちでない方は<nuxt-link to='/register' class="text-indigo-700 font-semibold">こちら</nuxt-link>から。                    
@@ -78,7 +63,6 @@
 <script>
 export default {
     layout: "default",
-
     data(){
         return {
             form:{
@@ -86,6 +70,11 @@ export default {
                 password: 'password',
             }
         }
+    },
+    mounted() {
+        this.$router.push({
+            path: this.$route.query.redirect || '/'
+        }) 
     },
     methods:{
         async submit(){

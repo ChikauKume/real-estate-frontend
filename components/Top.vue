@@ -26,20 +26,20 @@
                 />
             </GmapMap>
         </div>
-        <div class="desc px-8">
+        <div class="desc px-6">
             <div class="title text-3xl mb-5 flex">
                 <img src="/image/home.png" class="rounded-md outline outline-1 w-1/6">
-                <span class="flex items-center ml-5 text-">住まいを探す</span>
+                <span class="flex items-center ml-5">住まいを探す</span>
             </div>
             <div class="pb-5">
                 <div class="text-lg font-semibold">1.場所を選択</div>
 
-                <div class="flex flex-col space-y-3 mt-3">
+                <div class="flex flex-col justify-center items-center space-y-3 mt-3">
 
                     <div class="flex space-x-4 h-10">
                         <label for="shizuoka" class="flex items-center">愛　知　県</label>
                         <select name="shizuoka" id="shizuoka"
-                        class="border border-navy text-base rounded px-2"
+                        class="border border-solid border-gray rounded px-2"
                         @change="maplocation=owari">
                             <option value="0">地域を選択してください</option>
                             <option 
@@ -57,7 +57,7 @@
                     <div class="flex space-x-4 h-10">
                         <label for="shizuoka" class="flex items-center">静　岡　県</label>
                         <select name="shizuoka" id="shizuoka"
-                        class="border border-navy text-base rounded px-2">
+                        class="border border-solid border-gray rounded px-2">
                             <option value="0">地域を選択してください</option>
                             <option value="1">浜　松</option>
                             <option value="2">焼　津</option>
@@ -70,7 +70,7 @@
                     <div class="flex space-x-4 h-10">
                         <label for="shizuoka" class="flex items-center">三　重　県</label>
                         <select name="shizuoka" id="shizuoka"
-                        class="border border-navy text-base rounded px-2">
+                        class="border border-solid border-gray rounded px-2">
                             <option value="0">地域を選択してください</option>
                             <option value="1">四　日　市</option>
                             <option value="2">伊　賀</option>
@@ -84,9 +84,9 @@
 
 
                     <div class="flex space-x-4 h-10">
-                        <label for="shizuoka" class="flex items-center">岐　阜　県</label>
+                        <label for="shizuoka" class="w-1/2 flex items-center">岐　阜　県</label>
                         <select name="shizuoka" id="shizuoka"
-                        class="border border-navy text-base rounded px-2">
+                        class="border border-solid border-gray rounded px-2">
                             <option value="0">地域を選択してください</option>
                             <option value="1">奥　飛　騨</option>
                             <option value="2">高　山</option>
@@ -100,7 +100,7 @@
                 </div>
             </div>
             <div class="text-lg font-semibold">2.マップから家を選択</div>
-            <div>
+            <div class="flex justify-center items-center">
                 <img src="/image/map.svg" class="w-1/2">
             </div>
         </div>

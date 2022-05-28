@@ -22,6 +22,22 @@
             <v-list-item-title v-text="item.title" />
           </v-list-item-content>
         </v-list-item>
+
+        <v-list-item
+          router
+          exact
+          class="hover:cursor-pointer"
+        >
+          <v-list-item-action>
+            <v-icon>mdi-logout</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title @click.prevent="logout">
+              Logout
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
       </v-list>
     </v-navigation-drawer>
     <v-app-bar
@@ -65,6 +81,7 @@
 
 <script>
 export default {
+    middleware: ['auth'],
     data () {
         return {
             clipped: false,
@@ -85,6 +102,10 @@ export default {
                     icon: 'mdi-email',
                     title: 'Inquiry',
                     to: '/admin/inquiries'
+                },
+                {
+                    // title: 'Logout',
+                    // to: '/admin/logout'
                 },
             ],
             headers: [
@@ -139,129 +160,6 @@ export default {
                     align: 'center'
                 },
             ],
-            contents: [
-                {
-                    id: 1,
-                    image: 'first-view.jpeg',
-                    name: 'レジデンス白潟 A000B/ 2階',
-                    type: '一戸建て',
-                    bill: '85,000',
-                    location: '島根県松江市菅田町332-3',
-                    transportation: 'JR山陰本線 松江駅 徒歩10分',
-                    area: '18.15㎡',
-                    layout: '1K',
-                },
-                {
-                    id: 2,
-                    image: 'first-view.jpeg',
-                    name: 'Kレジデンス白潟 A000B/ 2階',
-                    type: '一戸建て',
-                    bill: '85,000',
-                    location: '島根県松江市菅田町332-3',
-                    transportation: 'JR山陰本線 松江駅 徒歩10分',
-                    area: '18.15㎡',
-                    layout: '1K',
-                },
-                {
-                    id: 2,
-                    image: 'first-view.jpeg',
-                    name: 'レジデンス白潟 A000B/ 2階',
-                    type: '一戸建て',
-                    bill: '85,000',
-                    location: '島根県松江市菅田町332-3',
-                    transportation: 'JR山陰本線 松江駅 徒歩10分',
-                    area: '18.15㎡',
-                    layout: '1K',
-                },
-                {
-                    id: 2,
-                    image: 'first-view.jpeg',
-                    name: 'レジデンス白潟 A000B/ 2階',
-                    type: '一戸建て',
-                    bill: '85,000',
-                    location: '島根県松江市菅田町332-3',
-                    transportation: 'JR山陰本線 松江駅 徒歩10分',
-                    area: '18.15㎡',
-                    layout: '1K',
-                },
-                {
-                    id: 2,
-                    image: 'first-view.jpeg',
-                    name: 'レジデンス白潟 A000B/ 2階',
-                    type: '一戸建て',
-                    bill: '85,000',
-                    location: '島根県松江市菅田町332-3',
-                    transportation: 'JR山陰本線 松江駅 徒歩10分',
-                    area: '18.15㎡',
-                    layout: '1K',
-                },
-                {
-                    id: 2,
-                    image: 'first-view.jpeg',
-                    name: 'レジデンス白潟 A000B/ 2階',
-                    type: '一戸建て',
-                    bill: '85,000',
-                    location: '島根県松江市菅田町332-3',
-                    transportation: 'JR山陰本線 松江駅 徒歩10分',
-                    area: '18.15㎡',
-                    layout: '1K',
-                },
-                {
-                    id: 2,
-                    image: 'first-view.jpeg',
-                    name: 'レジデンス白潟 A000B/ 2階',
-                    type: '一戸建て',
-                    bill: '85,000',
-                    location: '島根県松江市菅田町332-3',
-                    transportation: 'JR山陰本線 松江駅 徒歩10分',
-                    area: '18.15㎡',
-                    layout: '1K',
-                },
-                {
-                    id: 2,
-                    image: 'first-view.jpeg',
-                    name: 'レジデンス白潟 A000B/ 2階',
-                    type: '一戸建て',
-                    bill: '85,000',
-                    location: '島根県松江市菅田町332-3',
-                    transportation: 'JR山陰本線 松江駅 徒歩10分',
-                    area: '18.15㎡',
-                    layout: '1K',
-                },
-                {
-                    id: 2,
-                    image: 'first-view.jpeg',
-                    name: 'レジデンス白潟 A000B/ 2階',
-                    type: '一戸建て',
-                    bill: '85,000',
-                    location: '島根県松江市菅田町332-3',
-                    transportation: 'JR山陰本線 松江駅 徒歩10分',
-                    area: '18.15㎡',
-                    layout: '1K',
-                },
-                {
-                    id: 2,
-                    image: 'first-view.jpeg',
-                    name: 'レジデンス白潟 A000B/ 2階',
-                    type: '一戸建て',
-                    bill: '85,000',
-                    location: '島根県松江市菅田町332-3',
-                    transportation: 'JR山陰本線 松江駅 徒歩10分',
-                    area: '18.15㎡',
-                    layout: '1K',
-                },
-                {
-                    id: 2,
-                    image: 'first-view.jpeg',
-                    name: 'レジデンス白潟 A000B/ 2階',
-                    type: '一戸建て',
-                    bill: '85,000',
-                    location: '島根県松江市菅田町332-3',
-                    transportation: 'JR山陰本線 松江駅 徒歩10分',
-                    area: '18.15㎡',
-                    layout: '1K',
-                },
-            ],
             miniVariant: false,
             right: true,
             rightDrawer: false,
@@ -273,6 +171,12 @@ export default {
         onClickShow(item) {
             console.log(`${item.name}:${item.price}`);
         },
+        logout(){
+            this.$auth.logout()
+            this.$router.push({
+                path: this.$route.query.redirect || '/admin/login'
+            })
+        }
     }
 }
 </script>

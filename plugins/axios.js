@@ -1,15 +1,15 @@
-// // import { redirect } from "@nuxtjs/auth/lib/module/defaults";
+// import { redirect } from "@nuxtjs/auth/lib/module/defaults";
 
-// export default function({$axios, store, redirect}){
-//     $axios.onError(error => {
-//         if(error.response.status === 422){
-//             store.dispatch("validation/setErrors", error.response.data.errors)
-//             return redirect("/login")
-//         }
-//         return Promise.reject(error);
-//     })
+export default function({$axios, store, redirect}){
+    $axios.onError(error => {
+        if(error.response.status === 422){
+            store.dispatch("validation/setErrors", error.response.data.errors)
+            return redirect("/admin/login")
+        }
+        return Promise.reject(error);
+    })
 
-//     $axios.onRequest(() => {
-//         store.dispatch("validation/clearErrors")
-//     })
-// }
+    $axios.onRequest(() => {
+        store.dispatch("validation/clearErrors")
+    })
+}

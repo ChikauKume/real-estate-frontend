@@ -15,12 +15,21 @@ export default {
     ]
   },
 
+  router: {
+    middleware: [
+      'clearValidationErrors'
+    ]
+  },
+
   css: [
   ],
 
   plugins: [
     { src: '~/plugins/vue2-google-maps.js' },
     { src: '~/plugins/axios.js' },
+    { src: '~/plugins/mixins/validation.js' },
+    { src: '~/plugins/mixins/user.js' },
+    
   ],
 
   components: true,
@@ -67,16 +76,21 @@ export default {
             propertyName: "meta.token"
           },
           user: {
-            url: "user",
+            url: "/user",
             method: "get",
             propertyName: false
           },
           logout: {
-            url: "logout",
+            url: "/logout",
             method: "post"
           }
         }
       }
+    },
+    redirect: {
+      login: '/admin/login',
+      home: '/admin/real-estates',
+      logout: '/admin/login'
     }
   },
 
