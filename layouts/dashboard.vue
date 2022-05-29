@@ -26,15 +26,14 @@
         <v-list-item
           router
           exact
-          class="hover:cursor-pointer"
         >
           <v-list-item-action>
             <v-icon>mdi-logout</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title @click.prevent="logout">
-              Logout
-            </v-list-item-title>
+            <button @click.prevent="logout" class="cursor-pointer flex justify-start">
+              ログアウト
+            </button>
           </v-list-item-content>
         </v-list-item>
 
@@ -90,74 +89,22 @@ export default {
             items: [
                 {
                     icon: 'mdi-home-city',
-                    title: 'Real Estate',
+                    title: '不動産管理',
                     to: '/admin/real-estates'
                 },
                 {
                     icon: 'mdi-account',
-                    title: 'User',
+                    title: 'ユーザ管理',
                     to: '/admin/users'
                 },
                 {
                     icon: 'mdi-email',
-                    title: 'Inquiry',
+                    title: 'お問い合わせ管理',
                     to: '/admin/inquiries'
                 },
                 {
                     // title: 'Logout',
                     // to: '/admin/logout'
-                },
-            ],
-            headers: [
-                // Dynamic headers
-                {
-                    text: '',
-                    value: 'image',
-                },
-                {
-                    text: 'Type',
-                    value: 'type',
-                    align: 'center'
-                },
-                {
-                    text: 'Name',
-                    value: 'name',
-                    align: 'center'
-                },
-                {
-                    text: 'Bill',
-                    value: 'bill',
-                    align: 'center'
-                },
-                {
-                    text: 'Location',
-                    value: 'location',
-                    align: 'center'
-                },
-                {
-                    text: 'Transportation',
-                    value: 'transportation',
-                    align: 'center'
-                },
-                {
-                    text: 'Area',
-                    value: 'area',
-                    align: 'center'
-                },
-                {
-                    text: 'Layout',
-                    value: 'layout',
-                    align: 'center'
-                },
-                {
-                    text: '',
-                    value: 'edit',
-                    align: 'center'
-                },
-                {
-                    text: '',
-                    value: 'delete',
-                    align: 'center'
                 },
             ],
             miniVariant: false,

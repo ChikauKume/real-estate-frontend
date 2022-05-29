@@ -39,7 +39,7 @@
                     <div class="flex space-x-4 h-10">
                         <label for="shizuoka" class="flex items-center">愛　知　県</label>
                         <select name="shizuoka" id="shizuoka"
-                        class="border border-solid border-gray rounded px-2"
+                        class="border border-solid border-gray-300 rounded px-2"
                         @change="maplocation=owari">
                             <option value="0">地域を選択してください</option>
                             <option 
@@ -57,7 +57,7 @@
                     <div class="flex space-x-4 h-10">
                         <label for="shizuoka" class="flex items-center">静　岡　県</label>
                         <select name="shizuoka" id="shizuoka"
-                        class="border border-solid border-gray rounded px-2">
+                        class="border border-solid border-gray-300 rounded px-2">
                             <option value="0">地域を選択してください</option>
                             <option value="1">浜　松</option>
                             <option value="2">焼　津</option>
@@ -70,7 +70,7 @@
                     <div class="flex space-x-4 h-10">
                         <label for="shizuoka" class="flex items-center">三　重　県</label>
                         <select name="shizuoka" id="shizuoka"
-                        class="border border-solid border-gray rounded px-2">
+                        class="border border-solid border-gray-300 rounded px-2">
                             <option value="0">地域を選択してください</option>
                             <option value="1">四　日　市</option>
                             <option value="2">伊　賀</option>
@@ -86,7 +86,7 @@
                     <div class="flex space-x-4 h-10">
                         <label for="shizuoka" class="w-1/2 flex items-center">岐　阜　県</label>
                         <select name="shizuoka" id="shizuoka"
-                        class="border border-solid border-gray rounded px-2">
+                        class="border border-solid border-gray-300 rounded px-2">
                             <option value="0">地域を選択してください</option>
                             <option value="1">奥　飛　騨</option>
                             <option value="2">高　山</option>

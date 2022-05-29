@@ -17,7 +17,8 @@ export default {
 
   router: {
     middleware: [
-      'clearValidationErrors'
+      'clearValidationErrors',
+      'guest',
     ]
   },
 

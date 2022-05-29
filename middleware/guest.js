@@ -1,5 +1,6 @@
 export default function({store, redirect}){
-    if(store.getters['authenticated']){
-        return redirect('/admin/real-states')
+    // console.log('processed')
+    if(store.loggedIn){
+        return redirect('/admin/real-estates')
     }
 }

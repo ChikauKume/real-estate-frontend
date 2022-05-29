@@ -12,6 +12,7 @@
                 <span>Google アカウントでログイン</span>
             </button> -->
             <div class="text-center text-red-700" v-if="errors.email">{{ errors.email[0] }}</div>
+            <div class="text-center text-red-700" v-if="errors.admin">{{ errors.admin[0] }}</div>
 
             <v-form @submit.prevent="submit">
                 <v-container>
@@ -74,11 +75,12 @@
 <script>
 export default {
     layout: "default",
+    middleware: ['guest'],
 
     data(){
         return {
             form:{
-                email: 'test@gmail.com',
+                email: 'admin@gmail.com',
                 password: 'password',
             }
         }
