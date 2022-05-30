@@ -128,7 +128,7 @@
             <div class="bg-navy-blue text-white rounded font-semibold text-center">物件種別</div>
             <div class="mb-5 border-l border-gray-400 py-1 px-2 mt-3">
                 <div>
-                    <div>
+                    <div class="mt-3" v-for="data in realEstatesData" :key="data.id">
                         <div class="ui slider checkbox">
                         <label class="text-sm font-semibold">マンション</label>
                         </div>
@@ -188,3 +188,9 @@
 
     </div>
 </template>
+
+<script>
+export default {
+    props: ['realEstatesData']
+}
+</script>

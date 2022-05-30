@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="w-full px-10">
-      <Top/>
+      <Top :realEstatesData = realEstatesData />
       <div class="body flex space-x-10 mt-10">
         <Sidebar/>
         <div class="house-list w-full">
@@ -31,8 +31,8 @@ export default {
     async getRealStateData(){
       try {
         const res = await this.$axios.$get('/real-estates')
-        console.log(res.data)
         this.realEstatesData = res.data
+        console.log('res', res.data)
       }
       catch(err){
         console.log('error',err)

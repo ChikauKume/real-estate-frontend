@@ -28,12 +28,12 @@
                     </select>
                 </div>
             </div>
-            <div class="rounded p-4 mb-5" v-for="data in realEstatesData" :key="data.id">
+            <div class="rounded my-10" v-for="data in realEstatesData" :key="data.id">
                 <div>
                     <div class="pb-4 flex space-x-4 items-center">
                         <span 
-                        class="bg-navy-blue text-white text-bold 
-                        text-xs p-2 rounded">{{ data.type }}</span>
+                        class="bg-navy-blue text-white text-extrabold
+                        text-xs p-2 rounded">{{ data.type.type }} {{ data.type.name }}</span>
                         <nuxt-link class="text-indigo-700 underline font-semibold text-lg justify-center" to="/details">{{ data.name }}</nuxt-link>
                     </div>
                     <div class="flex">
@@ -43,7 +43,7 @@
                                 <tbody>
                                     <tr>
                                         <td class="bg-light-gray border   border-gray text-xs px-4 py-2">賃料/管理費等</td>
-                                        <td class="border border-gray text-sm px-4 py-2 font-extrabold text-red-700">{{ data.bill }}</td>
+                                        <td class="border border-gray text-sm px-4 py-2 font-extrabold text-red-700"><span class="font-bold">{{ data.bill }}</span>万円</td>
                                     </tr>
                                     <tr>
                                         <td class="bg-light-gray border   border-gray text-xs px-4 py-2">所在地</td>
@@ -55,7 +55,7 @@
                                     </tr>
                                     <tr>
                                         <td class="bg-light-gray border   border-gray text-xs px-4 py-2">専有面積/間取り</td>
-                                        <td class="border border-gray text-sm px-4 py-2">{{ data.area }}m² / {{ data.layout}}</td>
+                                        <td class="border border-gray text-sm px-4 py-2">{{ data.area }}m² / {{ data.layout.name}}</td>
                                     </tr>       
                                 </tbody>
                             </table>

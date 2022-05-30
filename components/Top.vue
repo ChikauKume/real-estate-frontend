@@ -15,15 +15,16 @@
                     @closeclick="infoWinOpen=false"
                 />
 
-                <GmapMarker
-                    :key="index"
-                    v-for="(m, index) in markers"
+                <GmapMarker v-for="(m,id) in marker_items"
                     :position="m.position"
-                    :clickable="true"
-                    :draggable="false"
-                    :icon="markerOptions"
-                    @click="toggleInfoWindow(m,index)"
-                />
+                    :title="m.title"
+                    :label="m.label"
+                    :icon="m.icon"
+                    :clickable="true" 
+                    :draggable="false" 
+                    :key="id" @click="toggleInfoWindow(m,m.id)"
+                >
+                </GmapMarker>
             </GmapMap>
         </div>
         <div class="desc px-6">
@@ -109,11 +110,11 @@
 
 <script>
 export default {
-    components:{
-    },
+    props: ['realEstatesData'],
     data () {
         return {
-            maplocation: { lat:0, lng: 0 },
+            maplocation: { lat:35.2188529, lng: 137.0171227 },
+            marker_items: [],
             options:{
                 zoom:10,
                 zoomControl: false,
@@ -156,67 +157,14 @@ export default {
                 navigator.geolocation.getCurrentPosition(this.success, this.error, options)
             }
         },
-        success (position) {
-            this.maplocation.lat = position.coords.latitude
-            this.maplocation.lng = position.coords.longitude
-            const infoText = 
-                '<div>'+
-                    '<div>'+
-                        '<div class="pb-4 flex space-x-4">'+
-                            '<span class="bg-navy-blue text-white text-bold text-xs flex items-center px-2 rounded">新築マンション</span>'+
-                            '<span class="text-lg">レジデンス白潟 A000B/ 2階</span>'+
-                        '</div>'+
-                        '<div class="flex">'+
-                            '<img src="/image/first-view.jpeg" class="w-1/3 rounded">'+
-                            '<div class="desc pl-2 w-full">'+
-                                '<table class="table-auto">'+
-                                    '<tbody>'+
-                                        '<tr>'+
-                                            '<td class="border text-xs p-2">賃料/管理費等</td>'+
-                                            '<td class="border text-xs p-2 font-extrabold text-red-700">8.5万</td>'+
-                                        '</tr>'+
-                                        '<tr>'+
-                                            '<td class="border text-xs p-2">所在地</td>'+
-                                            '<td class="border text-xs p-2">島根県松江市菅田町332-3</td>'+
-                                        '</tr>'+
-                                            '<td class="border text-xs p-2">交通</td>'+
-                                            '<td class="border text-xs p-2">JR山陰本線 松江駅 徒歩10分</td>'+
-                                        '</tr>'+
-                                        '<tr>'+
-                                            '<td class="border text-xs p-2">専有面積/間取り</td>'+
-                                            '<td class="border text-xs p-2">18.15m² / 1K</td>'+
-                                        '</tr>'+       
-                                    '</tbody>'+
-                                '</table>'+
-                            '</div>'+
-                        '</div>'+
-                        '<div class="mt-4">'+
-                            '<button type="button" class="w-full bg-navy-blue text-white text-extrabold px-2 h-10 rounded">この物件を見る</button>'+
-                        '</div>'+
-                    '</div>'+
-                '</div>'
-            this.markers =  [
-                {
-                    position: { lat: 35.7668603, lng: 139.7719506 },
-                    infoText: infoText
-                },
-            ]
-               
-        },
-        error (error) {
-            switch (error.code) {
-                case 1: //PERMISSION_DENIED
-                    alert('位置情報の利用が許可されていません')
-                break
-                case 2: //POSITION_UNAVAILABLE
-                    alert('現在位置が取得できませんでした')
-                break
-                case 3: //TIMEOUT
-                    alert('タイムアウトになりました')
-                break
-                default:
-                    alert('現在位置が取得できませんでした')
-                break
+        async getMapData(){
+            try {
+                const res = await this.$axios.$get('/real-estates/map')
+                console.log('res',res.data)
+                this.marker_items = res.data
+            }
+            catch(err){
+                console.log('error',err)
             }
         },
         toggleInfoWindow: function(marker, idx) {
@@ -233,10 +181,10 @@ export default {
               this.currentMidx = idx;
 
             }
-          }
+        }
     },
     mounted() {
-        this.getLocation();
+        this.getMapData();
     },
 }
 </script>
