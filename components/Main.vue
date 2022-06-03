@@ -1,11 +1,11 @@
 <template>
     <div class="main">
-        <div class="mb-5 py-4 px-4">
-            <hr class="navy-blue h-1 mb-5">
-            <div class="search_result flex my-3">
+        <div class="mb-5 py-2 px-4">
+            <hr class="navy-blue h-1 mb-4">
+            <div class="search_result flex my-1">
                 <div class="number_of_results w-1/4 flex justify-start items-center space-x-2">
                     <span class="flex text-sm">検索結果</span>
-                    <span class="font-bold text-red-600 text-4xl">15</span>
+                    <span class="font-bold text-red-600 text-2xl">15</span>
                     <span class="flex text-sm">件</span>
                 </div>
                 <div class="flex w-full space-x-2">
@@ -15,20 +15,13 @@
                     <select name="age" id="age"
                     class="border border-solid border-gray p-1 rounded text-sm">
                         <option value="0">指定しない</option>
-                        <option value="1">新 築</option>
-                        <option value="2">1年以内</option>
-                        <option value="3">3年以内</option>
-                        <option value="4">5年以内</option>
-                        <option value="5">7年以内</option>
-                        <option value="6">10年以内</option>
-                        <option value="7">15年以内</option>
-                        <option value="8">20年以内</option>
-                        <option value="9">25年以内</option>
-                        <option value="10">30年以内</option>
+                        <option value="1">おすすめ順</option>
+                        <option value="2">新しい順</option>
+                        <option value="3">古い順</option>
                     </select>
                 </div>
             </div>
-            <div class="rounded my-10" v-for="data in realEstatesData" :key="data.id">
+            <div class="rounded my-5 mb-10" v-for="data in realEstatesData" :key="data.id">
                 <div>
                     <div class="pb-4 flex space-x-4 items-center">
                         <span 
@@ -42,12 +35,17 @@
                             <table class="table-auto w-full">
                                 <tbody>
                                     <tr>
-                                        <td class="bg-light-gray border   border-gray text-xs px-4 py-2">賃料/管理費等</td>
+                                        <td class="bg-light-gray border  border-gray text-xs px-4 py-2">賃料/管理費等</td>
                                         <td class="border border-gray text-sm px-4 py-2 font-extrabold text-red-700"><span class="font-bold">{{ data.bill }}</span>万円</td>
                                     </tr>
                                     <tr>
                                         <td class="bg-light-gray border   border-gray text-xs px-4 py-2">所在地</td>
-                                        <td class="border border-gray text-sm px-4 py-2">{{ data.address }}</td>
+                                        <td class="border border-gray text-sm px-4 py-2">
+                                            {{ data.address1 }}
+                                            {{ data.address2 }}
+                                            {{ data.address3 }}
+                                            {{ data.address4 }}
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td class="bg-light-gray border   border-gray text-xs px-4 py-2">交通</td>

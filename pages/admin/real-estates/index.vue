@@ -1,11 +1,25 @@
 <template>
     <div class="p-10">
         <div class="text-2xl mb-5">不動産管理</div>
-        <v-text-field
-            append-icon="mdi-magnify"
-            label="検索"
-            single-line
-        />
+        <div class="flex">
+            <v-text-field
+                append-icon="mdi-magnify"
+                label="検索"
+                single-line
+                class="w-1/2"
+            />
+            <v-btn
+                class="ml-4"
+                fab
+                dark
+                color="indigo"
+                @click="$router.push('/admin/real-estates/new')"
+            >
+                <v-icon dark>
+                    mdi-plus
+                </v-icon>
+            </v-btn>
+        </div>
         <v-data-table
             :headers="headers"
             :items="contents"
