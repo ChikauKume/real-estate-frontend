@@ -64,7 +64,6 @@ export default {
   
   axios: { 
     baseURL: 'http://localhost/api',
-
   },
 
   auth: {
@@ -96,6 +95,7 @@ export default {
   },
 
   build: {
-    transpile: [/^vue2-google-maps($|\/)/]
+    transpile: [/^vue2-google-maps($|\/)/],
+    standalone: true,
   }
 }
