@@ -327,12 +327,29 @@ export default {
             let fd = new FormData()
             let form = this.form
 
-            fd.append('image',this.image)
-            // for(let i=0; i<form.images.length; i++){
-            //     fd.append('images', form.images[i].uploadFile)
-            // }
+            for(let i=0; i<form.images.length; i++){
+                console.log('image data', form.images[i])
+                fd.append('images[]', form.images[i].uploadFile)
+            }
 
-            console.log('formData',fd.getAll('image'))
+            // fd.append('images', this.form.images)
+            // fd.append('bill', this.form.bill)
+            // fd.append('zipcode', this.form.zipcode)
+            // fd.append('address1', this.form.address1)
+            // fd.append('address2', this.form.address2)
+            // fd.append('address3', this.form.address3)
+            // fd.append('address4', this.form.address4)
+            // fd.append('lat', this.form.lat)
+            // fd.append('lng', this.form.lng)
+            // fd.append('transportation', this.form.transportation)
+            // fd.append('area', this.form.area)
+            // fd.append('real_estate_type_id', this.form.real_estate_type_id)
+            // fd.append('real_estate_layout_id', this.form.real_estate_layout_id)
+            // fd.append('age', this.form.age)
+            // fd.append('favorite', this.form.favorite)
+            // fd.append('form', this.form)
+
+            console.log('formDataImage',fd.getAll('image'))
             
             const config = {
                 headers: {
@@ -381,7 +398,8 @@ export default {
                 vm.images.push(obj);
             };
             reader.readAsDataURL(file);
-            console.log(vm.images)
+            console.log('images',this.form.images)
+
             // const config = {
             //     headers: {
             //         'content-type': 'multipart/form-data'
