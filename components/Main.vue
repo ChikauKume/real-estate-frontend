@@ -29,8 +29,9 @@
                         text-xs p-2 rounded">{{ data.type.type }} {{ data.type.name }}</span>
                         <nuxt-link class="text-indigo-700 underline font-semibold text-lg justify-center" to="/details">{{ data.name }}</nuxt-link>
                     </div>
-                    <div class="flex">
-                        <img :src="'/image/'+data.image"  class="w-1/3 rounded">
+                    <div class="flex">              
+
+                        <img :src="baseImageUrl + (data.image).split(',')[0]"  class="w-1/3 rounded">
                         <div class="desc pl-4 w-full">
                             <table class="table-auto w-full">
                                 <tbody>
@@ -68,6 +69,9 @@
 
 <script>
 export default {
-    props: ['realEstatesData']
+    props: [
+        'realEstatesData',
+        'baseImageUrl'
+    ]
 }
 </script>

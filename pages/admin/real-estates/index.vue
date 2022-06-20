@@ -1,12 +1,15 @@
 <template>
     <div class="p-10">
         <div class="text-2xl mb-5">不動産管理</div>
+
+        <div v-if="this.$route.query.success_message" class="text-green-700 font-bold">{{this.$route.query.success_message}}</div>
         <div class="flex">
             <v-text-field
                 append-icon="mdi-magnify"
                 label="検索"
                 single-line
                 class="w-1/2"
+                v-model="search"
             />
             <v-btn
                 class="ml-4"
@@ -23,11 +26,12 @@
         <v-data-table
             :headers="headers"
             :items="contents"
+            :search="search"
             class="elevation-1"
         >
             <template v-slot:[`item.image`]="{ item }">
                 <v-img 
-                :src="'/image/'+item.image"
+                :src="item.image"
                 :aspect-ratop="16/9"
                 height="6vw" 
                 min-height="80px"
@@ -36,7 +40,7 @@
                 class="my-2"/>
             </template>
             <template slot="item.edit" slot-scope="props" class="flex">
-                <v-btn icon @click="() => delete(props.item)">
+                <v-btn icon  @click="() => edit(props.item.id)">
                     <v-icon dark>mdi-pencil-box-outline</v-icon>
                 </v-btn>
             </template>
@@ -64,37 +68,37 @@ export default {
                     value: 'image',
                 },
                 {
-                    text: 'Type',
+                    text: 'タイプ',
                     value: 'type',
                     align: 'center'
                 },
                 {
-                    text: 'Name',
+                    text: '物件名',
                     value: 'name',
                     align: 'center'
                 },
                 {
-                    text: 'Bill',
+                    text: '家賃 (円) / 月',
                     value: 'bill',
                     align: 'center'
                 },
                 {
-                    text: 'Location',
+                    text: '所在地',
                     value: 'location',
                     align: 'center'
                 },
+                // {
+                //     text: 'Transportation',
+                //     value: 'transportation',
+                //     align: 'center'
+                // },
+                // {
+                //     text: 'Area',
+                //     value: 'area',
+                //     align: 'center'
+                // },
                 {
-                    text: 'Transportation',
-                    value: 'transportation',
-                    align: 'center'
-                },
-                {
-                    text: 'Area',
-                    value: 'area',
-                    align: 'center'
-                },
-                {
-                    text: 'Layout',
+                    text: 'レイアウト',
                     value: 'layout',
                     align: 'center'
                 },
@@ -109,30 +113,52 @@ export default {
                     align: 'center'
                 },
             ],
-            contents: [
-                {
-                    id: 1,
-                    image: 'first-view.jpeg',
-                    name: 'レジデンス白潟 A000B/ 2階',
-                    type: '一戸建て',
-                    bill: '85,000',
-                    location: '島根県松江市菅田町332-3',
-                    transportation: 'JR山陰本線 松江駅 徒歩10分',
-                    area: '18.15㎡',
-                    layout: '1K',
-                },
-            ],
+            search: "",
+            contents: [],
             miniVariant: false,
             right: true,
             rightDrawer: false,
-            title: 'Mike Real Estate'
+            baseImageUrl : 'https://gna-real-estate.s3.ap-northeast-1.amazonaws.com/realestates/'
         }
+    },
+    mounted(){
+        this.getData();
     },
     methods: {
         // 表示ボタンが押下された時に呼び出される。
         onClickShow(item) {
             console.log(`${item.name}:${item.price}`);
         },
+        async getData(){
+            try {
+                const res = await this.$axios.$get('/real-estates')
+                console.log('data', res.data)
+                for(let i=0; i<res.data.length; i++){
+
+                    let content = {
+                        id: res.data[i].id,
+                        image: this.baseImageUrl + (res.data[i].image).split(',')[0],
+                        name: (res.data[i].name).substr(0,15),
+                        type: res.data[i].type.type + res.data[i].type.name,
+                        bill: res.data[i].bill,
+                        location: (res.data[i].address1 + res.data[i].address2 + res.data[i].address3 + res.data[i].address4).substr(0,11),
+                        layout: res.data[i].layout.name,
+                        edit: res.data[i].id,
+                    }
+                    this.contents.push(content)
+                }
+                console.log('contents', this.contents)
+            }
+            catch(err){
+                console.log('error',err)
+            }
+        },
+        edit(id){
+            this.$router.push({
+                path: '/admin/real-estates/'+id+'/edit',
+            })           
+            console.log('params', id)
+        }
     }
 }
 </script>

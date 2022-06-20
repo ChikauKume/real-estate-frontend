@@ -60,7 +60,7 @@
       </v-btn>
     </v-app-bar>
     <v-main>
-        <Nuxt />
+        <Nuxt :baseImageUrl = baseImageUrl />
     </v-main>
     <v-navigation-drawer
       v-model="rightDrawer"
@@ -110,7 +110,8 @@ export default {
             miniVariant: false,
             right: true,
             rightDrawer: false,
-            title: 'Mike Real Estate'
+            title: 'My Kurashi',
+            baseImageUrl : 'https://gna-real-estate.s3.ap-northeast-1.amazonaws.com/realestates/'
         }
     },
     methods: {

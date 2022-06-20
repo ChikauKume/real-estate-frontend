@@ -1,6 +1,6 @@
 export default {
   head: {
-    title: 'Real Estate',
+    title: 'MyKurashi',
     htmlAttrs: {
       lang: 'en'
     },
@@ -90,7 +90,8 @@ export default {
     redirect: {
       login: '/admin/login',
       home: '/admin/real-estates',
-      logout: '/admin/login'
+      logout: '/admin/login',
+      realEstate:'/admin/real-estates',
     }
   },
 

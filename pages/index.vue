@@ -5,7 +5,7 @@
       <div class="body flex space-x-10 mt-10">
         <Sidebar/>
         <div class="house-list w-full">
-          <Main :realEstatesData = realEstatesData />
+          <Main :realEstatesData = realEstatesData :baseImageUrl = baseImageUrl />
         </div>
       </div>
     </div>
@@ -25,6 +25,7 @@ export default {
   data () {
     return {
       realEstatesData: [],
+      baseImageUrl : 'https://gna-real-estate.s3.ap-northeast-1.amazonaws.com/realestates/'
     }
   },
   methods: {

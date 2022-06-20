@@ -30,7 +30,9 @@
                             <div v-if="form.images" class="flex flex-wrap">
                                 <div v-for="(image, index) in form.images" :key='index'>
                                     <div class="m-2">
-                                        <img :src="image.thumnail" class="rounded" style="width:170px; height:120px;" />
+                                        <img v-if="image.thumnail" :src="image.thumnail" class="rounded" style="width:170px; height:120px;" />
+                                        <img v-else :src="baseImageUrl+image.name" class="rounded" style="width:170px; height:120px;" />
+                                        
                                         <button 
                                             @click="form.images.splice(index, 1)" 
                                             class="
@@ -91,7 +93,6 @@
                                     font-bold y-2
                                     mx-10
                                     w-1/3"
-                                @click="getAddress"
                             >
                                 住所検索
                                 <v-icon
@@ -211,7 +212,7 @@
                 <tr class="border-gray border-solid border">
                     <td class="bg-light-gray border border-gray font-semibold px-4">物件種別</td>
                     <td class="border border-gray text-sm">
-                        <select v-model.trim="form.real_estate_type_id"
+                        <select v-model.trim="form.type"
                             class="border-solid border-gray border px-4 m-4 py-1 rounded text-sm">
                             <option 
                                 v-for="type in types" 
@@ -225,7 +226,7 @@
                 <tr class="border-gray border-solid border">
                     <td class="bg-light-gray border border-gray font-semibold px-4">間取り</td>
                     <td class="border border-gray text-sm">
-                        <select v-model.trim="form.real_estate_layout_id"
+                        <select v-model.trim="form.layout"
                             class="border-solid border-gray border px-4 m-4 py-1 rounded text-sm">
                             <option 
                                 v-for="layout in layouts" 
@@ -266,7 +267,7 @@
         <div class="mt-5 w-1/2 flex justify-center">
             <button 
                 type="button"
-                @click="create"
+                @click="update"
                 class="
                 flex justify-center
                 w-full
@@ -275,7 +276,7 @@
                 bg-orange 
                 text-center p-3 rounded"
             >
-            上記の内容で作成する
+            上記の内容で更新する
             </button> 
         </div>
     </div>
@@ -295,31 +296,64 @@ export default {
     data () {
         return {
             form:{
-                'name': '名古屋城',
+                'id': '',
+                'name': '',
                 'images': [],
-                'bill': 50000,
-                'zipcode': '4600031',
-                'address1': '愛知県',
-                'address2': '名古屋市',
-                'address3': '中区本丸１−１',
+                'bill': null,
+                'zipcode': '',
+                'address1': '',
+                'address2': '',
+                'address3': '',
                 'address4': '',
-                'lat': 35.1847501,
-                'lng': 136.8974996,
-                'transportation': '〇〇駅から徒歩5分',
-                'area': 40.25,
-                'real_estate_prefecture_id': 1,
-                'real_estate_type_id': 1,
-                'real_estate_layout_id': 1,
-                'age': 20,
-                'favorite': 5,
+                'lat': null,
+                'lng': null,
+                'transportation': '',
+                'area': null,
+                'real_estate_prefecture_id': null,
+                'type': null,
+                'layout': null,
+                'age': null,
+                'favorite': null,
             },
             image: null,
             layouts: [],
             types: [],
+            baseImageUrl : 'https://gna-real-estate.s3.ap-northeast-1.amazonaws.com/realestates/'
         }
     },
+    mounted(){
+        console.log('route data', this.$route)
+        this.getTypeLayout()
+        this.getData();
+    },
     methods: {
-        async create(){
+        async getData(){
+            try{
+                const res = await this.$axios.$get('/real-estates/'+ this.$route.params.id)
+
+                let imageData = res.data.image.split(',')
+                for(let i=0; i<imageData.length; i++){
+                    let obj = {}
+                    obj.name = imageData[i]
+                    obj.uploadFile = null
+                    this.form.images.push(obj)
+                }
+                
+                let form = this.form
+                Object.keys(res.data).forEach(function (key) {
+                    if(key == "type" || key == "layout"){
+                        form[key] = res.data[key].id
+                    }
+                    else{
+                        form[key] = res.data[key]
+                    }
+                });
+            }
+           catch(err){
+                console.log(err)
+            }
+        },
+        async update(){
             try{
                 let fd = new FormData()
                 let form = this.form
@@ -367,23 +401,13 @@ export default {
             }
 
         },
-        async getAddress(){
-            try {
-                const url = 'https://zipcloud.ibsnet.co.jp/api/search/'
-                const zipcode = this.form.zipcode
-                const res = await this.$axios.$get(url+zipcode)
-                console.log('address', res.data)
-            }
-            catch(err){
-                console.log('error',err)
-            }
-        },
         async getTypeLayout(){
             try {
                 const res = await this.$axios.$get('/real-estates/type-layout')
                 console.log('layouts', res)
                 this.layouts = res.layout
                 this.types = res.type
+                
             }
             catch(err){
                 console.log('error',err)
@@ -404,18 +428,13 @@ export default {
                 obj.name = file.name;
                 vm.images.push(obj);
             };
+            console.log('file',file)
             reader.readAsDataURL(file);
             console.log('images',this.form.images)
-            console.log('file',file)
         },
         upload(){
             this.$refs.fileInput.click()
         },
-        submitImage(){
-        }
-    },
-    mounted(){
-        this.getTypeLayout()
     },
 }
 </script>
