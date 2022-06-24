@@ -299,6 +299,7 @@ export default {
                 'id': '',
                 'name': '',
                 'images': [],
+                'old_images': [],
                 'bill': null,
                 'zipcode': '',
                 'address1': '',
@@ -322,7 +323,6 @@ export default {
         }
     },
     mounted(){
-        console.log('route data', this.$route)
         this.getTypeLayout()
         this.getData();
     },
@@ -332,11 +332,14 @@ export default {
                 const res = await this.$axios.$get('/real-estates/'+ this.$route.params.id)
 
                 let imageData = res.data.image.split(',')
+                let arr = []
+
                 for(let i=0; i<imageData.length; i++){
                     let obj = {}
                     obj.name = imageData[i]
-                    obj.uploadFile = null
                     this.form.images.push(obj)
+                    arr.push(imageData[i])
+                    this.form.old_images = arr
                 }
                 
                 let form = this.form
@@ -361,9 +364,12 @@ export default {
                 for(let i=0; i<form.images.length; i++){
                     console.log('image data', form.images[i])
                     fd.append('images[]', form.images[i].uploadFile)
+                    fd.append('old_images[]', form.images[i].name)
                 }
 
+                fd.append('id', this.form.id)
                 fd.append('name', this.form.name)
+                // fd.append('old_images', this.form.old_images)
                 fd.append('bill', this.form.bill)
                 fd.append('zipcode', this.form.zipcode)
                 fd.append('address1', this.form.address1)
@@ -375,8 +381,8 @@ export default {
                 fd.append('transportation', this.form.transportation)
                 fd.append('area', this.form.area)
                 fd.append('real_estate_prefecture_id', this.form.real_estate_prefecture_id)
-                fd.append('real_estate_type_id', this.form.real_estate_type_id)
-                fd.append('real_estate_layout_id', this.form.real_estate_layout_id)
+                fd.append('type', this.form.type)
+                fd.append('layout', this.form.layout)
                 fd.append('age', this.form.age)
                 fd.append('favorite', this.form.favorite)
 
@@ -386,13 +392,13 @@ export default {
                     }
                 }
 
-                const res = await this.$axios.$post('/real-estates/create', fd, config)
+                const res = await this.$axios.$post('/real-estates/update', fd, config)
                 console.log('res', res)
 
 
                 this.$router.push({
                     path: '/admin/real-estates',
-                    query :{ success_message: '物件の登録が完了いたしました'},
+                    query :{ success_message: '物件の更新が完了いたしました'},
                 })
 
             }
@@ -425,12 +431,10 @@ export default {
             reader.onload = function(e) {
                 obj.thumnail = e.target.result;
                 obj.uploadFile = file;
-                obj.name = file.name;
+                obj.name = '';
                 vm.images.push(obj);
             };
-            console.log('file',file)
             reader.readAsDataURL(file);
-            console.log('images',this.form.images)
         },
         upload(){
             this.$refs.fileInput.click()

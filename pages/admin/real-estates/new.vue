@@ -211,7 +211,7 @@
                 <tr class="border-gray border-solid border">
                     <td class="bg-light-gray border border-gray font-semibold px-4">物件種別</td>
                     <td class="border border-gray text-sm">
-                        <select v-model.trim="form.real_estate_type_id"
+                        <select v-model.trim="form.type"
                             class="border-solid border-gray border px-4 m-4 py-1 rounded text-sm">
                             <option 
                                 v-for="type in types" 
@@ -225,7 +225,7 @@
                 <tr class="border-gray border-solid border">
                     <td class="bg-light-gray border border-gray font-semibold px-4">間取り</td>
                     <td class="border border-gray text-sm">
-                        <select v-model.trim="form.real_estate_layout_id"
+                        <select v-model.trim="form.layout"
                             class="border-solid border-gray border px-4 m-4 py-1 rounded text-sm">
                             <option 
                                 v-for="layout in layouts" 
@@ -308,8 +308,8 @@ export default {
                 'transportation': '〇〇駅から徒歩5分',
                 'area': 40.25,
                 'real_estate_prefecture_id': 1,
-                'real_estate_type_id': 1,
-                'real_estate_layout_id': 1,
+                'type': 1,
+                'layout': 1,
                 'age': 20,
                 'favorite': 5,
             },
@@ -341,8 +341,8 @@ export default {
                 fd.append('transportation', this.form.transportation)
                 fd.append('area', this.form.area)
                 fd.append('real_estate_prefecture_id', this.form.real_estate_prefecture_id)
-                fd.append('real_estate_type_id', this.form.real_estate_type_id)
-                fd.append('real_estate_layout_id', this.form.real_estate_layout_id)
+                fd.append('type', this.form.type)
+                fd.append('layout', this.form.layout)
                 fd.append('age', this.form.age)
                 fd.append('favorite', this.form.favorite)
 
