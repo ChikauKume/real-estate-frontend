@@ -5,7 +5,15 @@
                 <div class="px-6 w-full">
 
                     <h1 class="mb-6 text-3xl text-center">会員登録</h1>
-                    
+
+                    <div class="errors my-4 text-red-700 text-center">
+                        <div v-if="errors.error">{{ errors.error[0] }}</div>
+                        <div v-if="errors.name">{{ errors.name[0] }}</div>
+                        <div v-if="errors.email">{{ errors.email[0] }}</div>
+                        <div v-if="errors.password">{{ errors.password[0] }}</div>
+                        <div v-if="errors.password_confirmation">{{ errors.password_confirmation[0] }}</div>
+                    </div>
+
                     <v-form @submit.prevent="submit">
                         <v-container>
                                 <!-- <button
@@ -47,6 +55,15 @@
                                         v-model.trim="form.email"
                                         placeholder='test@gmail.com'
                                         label="メールアドレス"
+                                    />
+                                </v-col>
+                            </v-row>
+                            <v-row>
+                                <v-col>
+                                    <v-text-field
+                                        v-model.trim="form.phone"
+                                        placeholder='09011223344'
+                                        label="電話番号"
                                     />
                                 </v-col>
                             </v-row>
@@ -113,21 +130,21 @@
 </template>
 
 <script>
+import verifyVue from './verify.vue';
+
 export default {
     data(){
         return {
             form:{
                 name: 'test',
                 email: 'test@gmail.com',
+                phone: '07089387369',
                 password: 'password',
                 password_confirmation: 'password',
             },
         }
     },
     mounted() {
-        this.$router.push({
-            path: this.$route.query.redirect || '/'
-        }) 
     },
     methods:{
 
@@ -138,26 +155,43 @@ export default {
 
        async submit(){
             try{
-                const str = document.getElementsByClassName('')
                 const res = await this.$axios.$post('/register', this.form)
                 console.log(res)
-                await this.$auth.login({
-                    data: {
-                        email: this.form.email,
-                        password: this.form.password,
-                    }
-                })
+                
+                // await this.$auth.login({
+                //     data: {
+                //         email: this.form.email,
+                //         password: this.form.password,
+                //     }
+                // })
 
+                this.submitSMS();
                 this.$router.push({
-                    path: this.$route.query.redirect || '/admin/real-estates'
+                    path: '/verify',
+                    query:{
+                        email: this.form.email,
+                        phone: this.form.phone,
+                    },
+                    props: true
                 })
                 // window.location = "http://localhost:3000";
 
             }
-             catch(err){
+            catch(err){
+
                 console.log(err)
             }
-        }
+        },
+               
+        async submitSMS(){
+            try{
+                const res = await this.$axios.$post('/sendSMS',this.form)
+                console.log('res', res)
+            }
+             catch(err){
+                console.log('error',err)
+            }
+        },
     }
 }
 </script>

@@ -282,7 +282,7 @@
 </template>
 
 <script>
-import RealEstateValidation from '@/components/RealEstateValidation'
+import RealEstateValidation from '@/components/RealEstateValidation.vue'
 
 export default {
     props: {

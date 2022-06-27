@@ -140,6 +140,9 @@ export default {
             },
             markers: [],
             owari: { lat:35.2188529, lng: 137.0171227 },
+            form: {
+                tel: '07089387369'
+            }
         }
     },
     methods: {

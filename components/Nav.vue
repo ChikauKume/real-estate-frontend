@@ -7,11 +7,11 @@
             <nuxt-link to="/"  class="logo left-side mr-auto py-2 text-3xl font-semibold">
                 {{ title }}
             </nuxt-link>
-            <!-- <div class="flex justify-end items-center">
+            <div class="flex justify-end items-center">
                 <nuxt-link to="/register" class="registration font-semibold hover:border-red-700 border-transparent border-b-2 cursor-pointer py-2 px-3 cursor-pointer">会員登録</nuxt-link>
                 <nuxt-link to="/login" class="login font-semibold hover:border-red-700 border-transparent border-b-2
         cursor-pointer py-2 px-3 cursor-pointer">ログイン</nuxt-link>
-            </div> -->
+            </div>
         </div>
         <ul class="navbar-nav ml-auto">
             <!-- <li class="nav-item">

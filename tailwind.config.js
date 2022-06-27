@@ -17,6 +17,7 @@ module.exports = {
         'light-gray': '#F6F9F9',
         'orange': 'rgb(234 88 22)',
         'gray': '#bdc8ca',
+        'dark-gray': '#ABB0B8'
       },
       borderWidth: {
         DEFAULT: '1px',

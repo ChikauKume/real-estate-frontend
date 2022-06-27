@@ -1,5 +1,5 @@
 <template>
-    <div class="px-64">
+    <div class="px-40">
         <div class="min-h-screen flex flex-col">
             <div class="container max-w-md mx-auto flex-1 flex flex-col mt-10 px-2 w-2/3">
                 <div class="px-6 w-full">
@@ -72,9 +72,6 @@ export default {
         }
     },
     mounted() {
-        this.$router.push({
-            path: this.$route.query.redirect || '/'
-        }) 
     },
     methods:{
         async submit(){
