@@ -18,7 +18,7 @@ export default {
   router: {
     middleware: [
       'clearValidationErrors',
-      'guest',
+      // 'admin',
     ]
   },
 
@@ -90,7 +90,7 @@ export default {
     redirect: {
       login: '/admin/login',
       home: '/admin/real-estates',
-      logout: '/admin/login',
+      logout: '/',
       realEstate:'/admin/real-estates',
     }
   },

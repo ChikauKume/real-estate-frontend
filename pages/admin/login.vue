@@ -75,7 +75,7 @@
 <script>
 export default {
     layout: "default",
-    middleware: ['guest'],
+    // middleware: ['admin'],
 
     data(){
         return {

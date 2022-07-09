@@ -6,6 +6,7 @@
 
                     <h1 class="mb-6 text-3xl text-center">ログイン</h1>
                     
+                    <div class="px-2 text-center text-red-700" v-if="errors.error">{{ errors.error[0] }}</div>
                     <!-- <button
                         type="submit"
                         class="w-full bg-violet text-center text-white py-3 mb-10 rounded my-1"
@@ -66,7 +67,7 @@ export default {
     data(){
         return {
             form:{
-                email: 'admin@gmail.com',
+                email: 'test@gmail.com',
                 password: 'password',
             }
         }
@@ -76,9 +77,11 @@ export default {
     methods:{
         async submit(){
             try{
-                await this.$auth.login({data: this.form})
+                const res = await this.$auth.login({data: this.form})
+                console.log('res',res)
+
                 this.$router.push({
-                    path: this.$route.query.redirect || '/'
+                    path: '/dashboard',
                 })
             }
             catch(err){

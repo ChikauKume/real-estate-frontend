@@ -94,7 +94,7 @@ export default {
                 },
                 {
                     icon: 'mdi-account',
-                    title: 'ユーザ管理',
+                    title: '顧客管理',
                     to: '/admin/users'
                 },
                 {
@@ -114,15 +114,16 @@ export default {
             baseImageUrl : 'https://gna-real-estate.s3.ap-northeast-1.amazonaws.com/realestates/'
         }
     },
+    mounted(){
+    },
     methods: {
-        // 表示ボタンが押下された時に呼び出される。
         onClickShow(item) {
             console.log(`${item.name}:${item.price}`);
         },
         logout(){
             this.$auth.logout()
             this.$router.push({
-                path: this.$route.query.redirect || '/admin/login'
+                path: this.$route.query.redirect || '/'
             })
         }
     }

@@ -21,11 +21,12 @@
                                 :disabled="loading"
                                 @finish="onFinish"
                             />
-                            <!-- <v-overlay absolute :value="loading">
+                            <v-overlay absolute :value="loading">
                                 <v-progress-circular
                                 indeterminate
                                 color="primary"
-                            /> -->
+                            />
+                            </v-overlay>
                         </div>
                         <div>
                             <button
@@ -45,44 +46,32 @@
   export default {
     data: () => ({
         loading: false,
-        snackbar: false,
-        snackbarColor: 'default',
         otp: '',
         text: '',
-        expectedOtp: '133707',
     }),
     methods: {
 
       async onFinish (rsp) {
-        try {
+        try{
             this.loading = true
+
             const res = await this.$axios.$post('/verification',
             {email:this.$route.query.email, otp:this.otp})
-            console.log('res',res)
 
-            // setTimeout(() => {
-            //     this.loading = false
-            //     this.snackbarColor = (rsp === this.expectedOtp) ? 'success' : 'warning'
-            //     this.text = `Processed OTP with "${rsp}" (${this.snackbarColor})`
-            //     this.snackbar = true
-            // }, 3500)
+            this.loading = false
 
-            if(res.status == 200){
-                this.$router.push({
-                    path: '/',
-                })
-            }
+            this.$router.push({
+                path: '/success-registration',
+            })
         }
         catch(err){
             console.log('error',err)
+            this.loading = false
         }
       },
 
       async resendSMS(){
         try{
-            console.log('email',this.$route.query.email)
-            console.log('phone',this.$route.query.phone)
-
             const $email = this.$route.query.email
             const $phone = this.$route.query.phone
 
