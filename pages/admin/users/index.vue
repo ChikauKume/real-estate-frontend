@@ -2,6 +2,11 @@
     <div class="p-10">
         <div class="text-2xl mb-5">顧客管理</div>
 
+        <!-- <DeleteModal
+            :confirmationText = confirmationText
+            :dialog = dialog    
+        /> -->
+
         <div class="flex">
             <v-text-field
                 append-icon="mdi-magnify"
@@ -33,8 +38,13 @@
                     <v-icon dark>mdi-pencil-box-outline</v-icon>
                 </v-btn>
             </template>
+            <!-- <template slot="item.delete" slot-scope="props" class="flex">
+                <v-btn icon @click="() => deleteUser(props.item.id, props.item.index)">
+                    <v-icon dark>mdi-delete</v-icon>
+                </v-btn>
+            </template> -->
             <template slot="item.delete" slot-scope="props" class="flex">
-                <v-btn icon @click="() => delete(props.item)">
+                <v-btn icon @click="() => confirmation(props.item)">
                     <v-icon dark>mdi-delete</v-icon>
                 </v-btn>
             </template>
@@ -42,8 +52,14 @@
     </div>
 </template>
 
+
 <script>
+import DeleteModal from '@/components/DeleteModal.vue'
+
 export default {
+    component:{
+        DeleteModal,
+    },
     layout: "dashboard",
     data () {
         return {
@@ -70,12 +86,12 @@ export default {
                 {
                     text: '',
                     value: 'edit',
-                    align: 'center'
+                    align: 'right'
                 },
                 {
                     text: '',
                     value: 'delete',
-                    align: 'center'
+                    align: 'left'
                 },
             ],
             contents: [],
@@ -83,24 +99,26 @@ export default {
             miniVariant: false,
             right: true,
             rightDrawer: false,
-            title: 'User Management | Mike Real Estate'
+            confirmationText: '',
+            dialog: false
         }
     },
     mounted(){
       this.getData()
     },
     methods: {
-        async getData(){
+        async getData(){ 
             try {
               const res = await this.$axios.$get('/admin/users')
-              console.log('data', res.data)
 
               for(let i=0; i<res.data.length; i++){
 
                     let content = {
+                        id: res.data[i].id,
                         name: (res.data[i].name).substr(0,15),
-                        email: (res.data[i].email).substr(0,15),
+                        email: res.data[i].email,
                         user_status: res.data[i].user_status.name,
+                        index: i,
                     }
                     this.contents.push(content)
                 }
@@ -109,11 +127,24 @@ export default {
               console.log('error',err)
           }
         },
-        logout(){
-            this.$auth.logout()
+        edit(id){
+            console.log('params', id)
             this.$router.push({
-                path: this.$route.query.redirect || '/'
-            })
+                path: '/admin/users/'+id+'/edit',
+            })           
+        },
+        confirmation(form){
+            this.confirmationText = form.email
+            let res = window.confirm(this.confirmationText + 'を削除してよろしいでしょうか？');
+
+            if(res){
+                this.deleteUser(form.id, form.index)
+            }
+        },
+        async deleteUser(id, index){
+            const res = await this.$axios.$post('/admin/users/delete', {'id':id})
+            console.log('res',res)
+            this.contents.splice(index, 1)
         }
     }
 }

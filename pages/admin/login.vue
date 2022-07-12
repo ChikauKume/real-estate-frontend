@@ -55,6 +55,7 @@
                                 v-model.trim="form.password"
                                 placeholder='8文字以上で入力'
                                 label="パスワード"
+                                type='password'
                             />
                         </v-col>
                     </v-row>

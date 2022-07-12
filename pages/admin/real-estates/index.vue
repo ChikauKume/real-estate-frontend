@@ -125,7 +125,6 @@ export default {
         this.getData();
     },
     methods: {
-        // 表示ボタンが押下された時に呼び出される。
         onClickShow(item) {
             console.log(`${item.name}:${item.price}`);
         },
