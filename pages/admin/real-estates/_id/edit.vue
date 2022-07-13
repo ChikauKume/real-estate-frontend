@@ -362,14 +362,12 @@ export default {
                 let form = this.form
 
                 for(let i=0; i<form.images.length; i++){
-                    console.log('image data', form.images[i])
                     fd.append('images[]', form.images[i].uploadFile)
                     fd.append('old_images[]', form.images[i].name)
                 }
 
                 fd.append('id', this.form.id)
                 fd.append('name', this.form.name)
-                // fd.append('old_images', this.form.old_images)
                 fd.append('bill', this.form.bill)
                 fd.append('zipcode', this.form.zipcode)
                 fd.append('address1', this.form.address1)
@@ -393,7 +391,7 @@ export default {
                 }
 
                 const res = await this.$axios.$post('/real-estates/update', fd, config)
-                console.log('res', res)
+                console.log('diffs', res)
 
 
                 this.$router.push({
@@ -410,7 +408,6 @@ export default {
         async getTypeLayout(){
             try {
                 const res = await this.$axios.$get('/real-estates/type-layout')
-                console.log('layouts', res)
                 this.layouts = res.layout
                 this.types = res.type
                 

@@ -1,6 +1,6 @@
 export default {
   head: {
-    title: 'MyKurashi',
+    title: 'mykurashi',
     htmlAttrs: {
       lang: 'en'
     },

@@ -39,7 +39,7 @@
 export default {
     data () {
         return {
-            title: 'My Kurashi'
+            title: 'mykurashi'
         }
     },
     methods:{

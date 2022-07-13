@@ -125,13 +125,9 @@ export default {
         this.getData();
     },
     methods: {
-        onClickShow(item) {
-            console.log(`${item.name}:${item.price}`);
-        },
         async getData(){
             try {
                 const res = await this.$axios.$get('/real-estates')
-                console.log('data', res.data)
                 for(let i=0; i<res.data.length; i++){
 
                     let content = {
@@ -146,7 +142,6 @@ export default {
                     }
                     this.contents.push(content)
                 }
-                console.log('contents', this.contents)
             }
             catch(err){
                 console.log('error',err)
@@ -156,7 +151,6 @@ export default {
             this.$router.push({
                 path: '/admin/real-estates/'+id+'/edit',
             })           
-            console.log('params', id)
         }
     }
 }

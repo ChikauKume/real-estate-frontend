@@ -110,7 +110,7 @@ export default {
             miniVariant: false,
             right: true,
             rightDrawer: false,
-            title: 'My Kurashi',
+            title: 'mykurashi',
             baseImageUrl : 'https://gna-real-estate.s3.ap-northeast-1.amazonaws.com/realestates/'
         }
     },
