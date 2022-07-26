@@ -25,15 +25,15 @@ export default {
   data () {
     return {
       realEstatesData: [],
-      baseImageUrl : 'https://gna-real-estate.s3.ap-northeast-1.amazonaws.com/realestates/'
+      baseImageUrl : 'https://gna-real-estate.s3.ap-northeast-1.amazonaws.com/realestates/',
     }
   },
   methods: {
     async getRealStateData(){
       try {
-        const res = await this.$axios.$get('/real-estates')
+        const res = await this.$axios.$get('/real-estates/type/1')
         this.realEstatesData = res.data
-        console.log('res', res.data)
+        console.log('data',res.data)
       }
       catch(err){
         console.log('error',err)

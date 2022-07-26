@@ -1,6 +1,6 @@
 <template>
     <div class="p-10">
-        <div class="text-2xl mb-5">顧客管理</div>
+        <div class="text-2xl mb-5">買主管理</div>
 
         <!-- <DeleteModal
             :confirmationText = confirmationText
@@ -20,7 +20,7 @@
                 fab
                 dark
                 color="indigo"
-                @click="$router.push('/admin/users/new')"
+                @click="$router.push('/admin/buyers/new')"
             >
                 <v-icon dark>
                     mdi-plus
@@ -109,7 +109,7 @@ export default {
     methods: {
         async getData(){ 
             try {
-              const res = await this.$axios.$get('/admin/users')
+              const res = await this.$axios.$get('/admin/buyers')
 
               for(let i=0; i<res.data.length; i++){
 
@@ -128,9 +128,8 @@ export default {
           }
         },
         edit(id){
-            console.log('params', id)
             this.$router.push({
-                path: '/admin/users/'+id+'/edit',
+                path: '/admin/buyers/'+id+'/edit',
             })           
         },
         confirmation(form){
@@ -142,8 +141,7 @@ export default {
             }
         },
         async deleteUser(id, index){
-            const res = await this.$axios.$post('/admin/users/delete', {'id':id})
-            console.log('res',res)
+            await this.$axios.$post('/admin/buyers/delete', {'id':id})
             this.contents.splice(index, 1)
         }
     }

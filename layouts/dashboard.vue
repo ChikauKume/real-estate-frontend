@@ -94,8 +94,13 @@ export default {
                 },
                 {
                     icon: 'mdi-account',
-                    title: '顧客管理',
-                    to: '/admin/users'
+                    title: '買主管理',
+                    to: '/admin/buyers'
+                },
+                {
+                    icon: 'mdi-account',
+                    title: '売主管理',
+                    to: '/admin/sellers'
                 },
                 {
                     icon: 'mdi-email',
@@ -110,16 +115,13 @@ export default {
             miniVariant: false,
             right: true,
             rightDrawer: false,
-            title: 'mykurashi',
+            title: 'マイ暮らし',
             baseImageUrl : 'https://gna-real-estate.s3.ap-northeast-1.amazonaws.com/realestates/'
         }
     },
     mounted(){
     },
     methods: {
-        onClickShow(item) {
-            console.log(`${item.name}:${item.price}`);
-        },
         logout(){
             this.$auth.logout()
             this.$router.push({

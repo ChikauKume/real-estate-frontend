@@ -1,25 +1,6 @@
 <template>
     <div class="main">
         <div class="mb-5 py-2 px-4">
-            <hr class="navy-blue h-1 mb-4">
-            <div class="search_result flex my-1">
-                <div class="number_of_results w-1/4 flex justify-start items-center space-x-2">
-                    <span class="flex text-sm">検索結果</span>
-                    <span class="font-bold text-red-600 text-2xl">15</span>
-                    <span class="flex text-sm">件</span>
-                </div>
-                <div class="flex w-full space-x-2">
-                    <div class="sort flex items-center justify-end">
-                        <label class="text-sm font-semibold">並び替え</label>
-                    </div>
-                    <select name="age" id="age"
-                    class="border border-solid border-gray p-1 rounded text-sm">
-                        <option value="0">指定しない</option>
-                        <option value="1">新しい順</option>
-                        <option value="2">古い順</option>
-                    </select>
-                </div>
-            </div>
             <div class="rounded my-5 mb-5" v-for="data in realEstatesData" :key="data.id">
                 <div>
                     <div class="pb-4 flex space-x-4 items-center">
@@ -30,7 +11,7 @@
                     </div>
                     <div class="flex">              
 
-                        <img :src="baseImageUrl + (data.image).split(',')[0]"  class="w-1/3 h-1/2 rounded">
+                        <img :src="baseImageUrl + (data.image).split(',')[0]"  class="w-1/4 h-1/3 rounded">
                         <div class="desc pl-4 w-full">
                             <table class="table-auto w-full">
                                 <tbody>
@@ -54,23 +35,23 @@
                                     <tr>
                                         <td class="bg-light-gray border   border-gray text-xs px-4 py-2">専有面積/間取り</td>
                                         <td class="border border-gray text-sm px-4 py-2">{{ data.area }}m² / {{ data.layout.name}}</td>
-                                    </tr>    
+                                    </tr>       
                                     <tr>
                                         <td></td>
                                         <td class="flex justify-end">
-                                            <button class="
+                                            <nuxt-link class="
                                                 bg-navy-blue 
-                                                text-white 
+                                                text-white
+                                                text-center
                                                 text-extrabold 
-                                                text-xs w-1/2
+                                                text-xs w-1/3
                                                 p-2 
                                                 mt-2
                                                 rounded
                                             "
-                                            @click="() => detail(data.id)"
-                                            >詳細を見る</button>
+                                            to="/details">詳細を見る</nuxt-link>
                                         </td>
-                                    </tr>   
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -87,19 +68,6 @@ export default {
     props: [
         'realEstatesData',
         'baseImageUrl'
-    ],
-    data () {
-        return {
-            thumbsup: false,
-        }
-    },
-    methods: {
-        detail(id){
-            console.log(id)
-            this.$router.push({
-                path: '/real-estates/'+id,
-            })      
-        }
-    },
+    ]
 }
 </script>

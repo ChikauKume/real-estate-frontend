@@ -6,8 +6,8 @@
 
                     <h1 class="mb-6 text-3xl text-center">会員登録</h1>
 
-                    <div class="errors my-4 text-red-700 text-center">
-                        <div v-if="errors.invalid">{{ errors.invalid[0] }}</div>
+                    <div class="errors my-4 text-red-700 text-left">
+                        <div v-if="errors.error">{{ errors.error[0] }}</div>
                     </div>
 
                     <div class="text-center my-4">
@@ -80,7 +80,6 @@
                 'phone' : $phone,
             }
             const res = await this.$axios.$post('/sendSMS',form)
-            console.log('res', res)
         }
         catch(err){
             console.log('error',err)

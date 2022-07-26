@@ -1,6 +1,6 @@
 <template>
     <div class="p-10">
-        <div class="text-2xl mb-5">不動産追加</div>
+        <div class="text-2xl mb-5">不動産編集</div>
 
         <RealEstateValidation :errors = errors />
 
@@ -175,7 +175,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="bg-light-gray border border-gray font-semibold px-4">家　賃 (円/月)</td>
+                    <td class="bg-light-gray border border-gray font-semibold px-4">家賃・販売価格</td>
                     <td class="border border-gray text-sm px-4">
                         <v-text-field
                             v-model.trim="form.bill"
@@ -197,10 +197,23 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="bg-light-gray border border-gray font-semibold px-4">専有面積 (㎡)</td>
+                    <td class="bg-light-gray border border-gray font-semibold px-4">土地面積 (㎡)</td>
                     <td class="border border-gray text-sm px-4">
                         <v-text-field
-                            v-model.trim="form.area"
+                            v-model.trim="form.land_area"
+                            placeholder='例 : 20.5'
+                            type="number"
+                            min="0"
+                            step="0.01"
+                            oninput="validity.valid||(value='');"
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="bg-light-gray border border-gray font-semibold px-4">建物面積 (㎡)</td>
+                    <td class="border border-gray text-sm px-4">
+                        <v-text-field
+                            v-model.trim="form.building_area"
                             placeholder='例 : 20.5'
                             type="number"
                             min="0"
@@ -236,6 +249,20 @@
                         </select>
                     </td>
                 </tr>
+                <tr class="border-gray border-solid border">
+                    <td class="bg-light-gray border border-gray font-semibold px-4">構造</td>
+                    <td class="border border-gray text-sm">
+                        <select v-model.trim="form.structure"
+                            class="border-solid border-gray border px-4 m-4 py-1 rounded text-sm">
+                            <option 
+                                v-for="structure in structures" 
+                                :key="structure.id" 
+                                :value="structure.id">
+                                    {{structure.name}}
+                            </option>
+                        </select>
+                    </td>
+                </tr>
                 <tr>
                     <td class="bg-light-gray border border-gray font-semibold px-4">築年数</td>
                     <td class="border border-gray text-sm px-4">
@@ -245,6 +272,89 @@
                             type="number"
                             min="0"
                             oninput="validity.valid||(value='');"
+                        />
+                    </td>
+                </tr>
+                                <tr>
+                    <td class="bg-light-gray border border-gray font-semibold px-4 w-1/4">その他</td>
+                    <td class="border border-gray text-sm px-4 text-red-700">
+                        <v-textarea
+                            v-model.trim="form.remarks"
+                            placeholder='例 : バストイレ別、バルコニー、フローリング、室内洗濯置、陽当り良好、南向き、角住戸、洗面所独立、2口コンロ、押入、閑静な住宅地、保証人不要、二人入居相談、2沿線利用可、緑豊かな住宅地、眺望良好、クロゼット2ヶ所'
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="bg-light-gray border border-gray font-semibold px-4 w-1/4">よくある質問</td>
+                    <td class="border border-gray text-sm px-4 text-red-700">
+                        <div class="flex space-x-8">
+                            <v-text-field
+                                v-model.trim="form.question1"
+                                label="質問 1"
+                            />
+                            <v-text-field
+                                v-model.trim="form.answer1"
+                                label="回答 1"
+                            />
+                        </div>
+                        <div class="flex space-x-8">
+                            <v-text-field
+                                v-model.trim="form.question2"
+                                label="質問 2"
+                            />
+                            <v-text-field
+                                v-model.trim="form.answer2"
+                                label="回答 2"
+                            />
+                        </div>
+                        <div class="flex space-x-8">
+                            <v-text-field
+                                v-model.trim="form.question3"
+                                label="質問 3"
+                            />
+                            <v-text-field
+                                v-model.trim="form.answer3"
+                                label="回答 3"
+                            />
+                        </div>
+                        <div class="flex space-x-8">
+                            <v-text-field
+                                v-model.trim="form.question4"
+                                label="質問 4"
+                            />
+                            <v-text-field
+                                v-model.trim="form.answer4"
+                                label="回答 4"
+                            />
+                        </div>
+                        <div class="flex space-x-8">
+                            <v-text-field
+                                v-model.trim="form.question5"
+                                label="質問 5"
+                            />
+                            <v-text-field
+                                v-model.trim="form.answer5"
+                                label="回答 5"
+                            />
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="bg-light-gray border border-gray font-semibold px-4 w-1/4">担当者</td>
+                    <td class="border border-gray text-sm px-4 text-red-700">
+                        <v-text-field
+                            v-model.trim="form.pic"
+                            placeholder='例 : 山田太郎'
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="bg-light-gray border border-gray font-semibold px-4 w-1/4">連絡先メールアドレス</td>
+                    <td class="border border-gray text-sm px-4 text-red-700">
+                        <v-text-field
+                            v-model.trim="form.email"
+                            placeholder='例 : sample@example.com'
                         />
                     </td>
                 </tr>
@@ -305,25 +415,42 @@ export default {
                 'address1': '',
                 'address2': '',
                 'address3': '',
-                'address4': '',
+                'address4': null,
                 'lat': null,
                 'lng': null,
                 'transportation': '',
-                'area': null,
+                'land_area': null,
+                'building_area': null,
                 'real_estate_prefecture_id': null,
                 'type': null,
                 'layout': null,
+                'structure': null,
+                'remarks': '',
+                'question1': null,
+                'question2': null,
+                'question3': null,
+                'question4': null,
+                'question5': null,
+                'answer1': null,
+                'answer2': null,
+                'answer3': null,
+                'answer4': null,
+                'answer5': null,
+                'expiration_date': null,
+                'pic': null,
+                'email': null,
                 'age': null,
                 'favorite': null,
             },
             image: null,
             layouts: [],
             types: [],
+            structures: [],
             baseImageUrl : 'https://gna-real-estate.s3.ap-northeast-1.amazonaws.com/realestates/'
         }
     },
     mounted(){
-        this.getTypeLayout()
+        this.getTypeLayoutStructure()
         this.getData();
     },
     methods: {
@@ -344,7 +471,7 @@ export default {
                 
                 let form = this.form
                 Object.keys(res.data).forEach(function (key) {
-                    if(key == "type" || key == "layout"){
+                    if(key == "type" || key == "layout" || key == "structure"){
                         form[key] = res.data[key].id
                     }
                     else{
@@ -377,11 +504,28 @@ export default {
                 fd.append('lat', this.form.lat)
                 fd.append('lng', this.form.lng)
                 fd.append('transportation', this.form.transportation)
-                fd.append('area', this.form.area)
+                fd.append('land_area', this.form.land_area)
+                fd.append('building_area', this.form.building_area)
                 fd.append('real_estate_prefecture_id', this.form.real_estate_prefecture_id)
                 fd.append('type', this.form.type)
                 fd.append('layout', this.form.layout)
+                fd.append('structure', this.form.structure)
                 fd.append('age', this.form.age)
+                fd.append('remarks', this.form.remarks)
+                fd.append('question1', this.form.question1)
+                fd.append('question2', this.form.question2)
+                fd.append('question3', this.form.question3)
+                fd.append('question4', this.form.question4)
+                fd.append('question5', this.form.question5)
+                fd.append('answer1', this.form.answer1)
+                fd.append('answer2', this.form.answer2)
+                fd.append('answer3', this.form.answer3)
+                fd.append('answer4', this.form.answer4)
+                fd.append('answer5', this.form.answer5)
+                fd.append('remarks', this.form.remarks)
+                fd.append('expiration_date', this.form.expiration_date)
+                fd.append('pic', this.form.pic)
+                fd.append('email', this.form.email)
                 fd.append('favorite', this.form.favorite)
 
                 const config = {
@@ -391,7 +535,7 @@ export default {
                 }
 
                 const res = await this.$axios.$post('/real-estates/update', fd, config)
-                console.log('diffs', res)
+                console.log('res', res)
 
 
                 this.$router.push({
@@ -405,12 +549,13 @@ export default {
             }
 
         },
-        async getTypeLayout(){
+        async getTypeLayoutStructure(){
             try {
-                const res = await this.$axios.$get('/real-estates/type-layout')
+                const res = await this.$axios.$get('/real-estates/type-layout-structure')
                 this.layouts = res.layout
                 this.types = res.type
-                
+                this.structures = res.structure
+                console.log(res)
             }
             catch(err){
                 console.log('error',err)

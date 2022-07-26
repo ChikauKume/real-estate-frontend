@@ -1,8 +1,12 @@
 <template>
     <div class="p-10">
-        <div class="text-2xl mb-5">不動産管理</div>
+        <div class="text-2xl mb-5">売主管理</div>
 
-        <div v-if="this.$route.query.success_message" class="text-green-700 font-bold">{{this.$route.query.success_message}}</div>
+        <!-- <DeleteModal
+            :confirmationText = confirmationText
+            :dialog = dialog    
+        /> -->
+
         <div class="flex">
             <v-text-field
                 append-icon="mdi-magnify"
@@ -16,7 +20,7 @@
                 fab
                 dark
                 color="indigo"
-                @click="$router.push('/admin/real-estates/new')"
+                @click="$router.push('/admin/sellers/new')"
             >
                 <v-icon dark>
                     mdi-plus
@@ -29,21 +33,16 @@
             :search="search"
             class="elevation-1"
         >
-            <template v-slot:[`item.image`]="{ item }">
-                <v-img 
-                :src="item.image"
-                :aspect-ratop="16/9"
-                height="6vw" 
-                min-height="80px"
-                width="10vw" 
-                min-width="160px" 
-                class="my-2"/>
-            </template>
             <template slot="item.edit" slot-scope="props" class="flex">
                 <v-btn icon  @click="() => edit(props.item.id)">
                     <v-icon dark>mdi-pencil-box-outline</v-icon>
                 </v-btn>
             </template>
+            <!-- <template slot="item.delete" slot-scope="props" class="flex">
+                <v-btn icon @click="() => deleteUser(props.item.id, props.item.index)">
+                    <v-icon dark>mdi-delete</v-icon>
+                </v-btn>
+            </template> -->
             <template slot="item.delete" slot-scope="props" class="flex">
                 <v-btn icon @click="() => confirmation(props.item)">
                     <v-icon dark>mdi-delete</v-icon>
@@ -53,8 +52,14 @@
     </div>
 </template>
 
+
 <script>
+import DeleteModal from '@/components/DeleteModal.vue'
+
 export default {
+    component:{
+        DeleteModal,
+    },
     layout: "dashboard",
     data () {
         return {
@@ -64,95 +69,79 @@ export default {
             headers: [
                 // Dynamic headers
                 {
-                    text: '',
-                    value: 'image',
-                },
-                {
-                    text: 'タイプ',
-                    value: 'type',
-                    align: 'center'
-                },
-                {
-                    text: '物件名',
+                    text: '名前',
                     value: 'name',
                     align: 'center'
                 },
                 {
-                    text: '家賃 (円) / 月',
-                    value: 'bill',
+                    text: 'メールアドレス',
+                    value: 'email',
                     align: 'center'
                 },
                 {
-                    text: '所在地',
-                    value: 'location',
-                    align: 'center'
-                },
-                {
-                    text: 'レイアウト',
-                    value: 'layout',
+                    text: '状態',
+                    value: 'user_status',
                     align: 'center'
                 },
                 {
                     text: '',
                     value: 'edit',
-                    align: 'center'
+                    align: 'right'
                 },
                 {
                     text: '',
                     value: 'delete',
-                    align: 'center'
+                    align: 'left'
                 },
             ],
-            search: "",
             contents: [],
+            search: "",
             miniVariant: false,
             right: true,
             rightDrawer: false,
-            baseImageUrl : 'https://gna-real-estate.s3.ap-northeast-1.amazonaws.com/realestates/',
-            usertype: 1,
+            confirmationText: '',
+            dialog: false
         }
     },
     mounted(){
-        this.getData();
+      this.getData()
     },
     methods: {
-        async getData(){
+        async getData(){ 
             try {
-                const res = await this.$axios.$get('/real-estates/type/'+this.usertype)
-                for(let i=0; i<res.data.length; i++){
+              const res = await this.$axios.$get('/admin/sellers')
+
+              for(let i=0; i<res.data.length; i++){
 
                     let content = {
                         id: res.data[i].id,
-                        image: this.baseImageUrl + (res.data[i].image).split(',')[0],
                         name: (res.data[i].name).substr(0,15),
-                        type: res.data[i].type.type + res.data[i].type.name,
-                        bill: res.data[i].bill,
-                        location: (res.data[i].address1 + res.data[i].address2 + res.data[i].address3 + res.data[i].address4).substr(0,11),
-                        layout: res.data[i].layout.name,
+                        email: res.data[i].email,
+                        user_status: res.data[i].user_status.name,
                         index: i,
                     }
                     this.contents.push(content)
                 }
-            }
-            catch(err){
-                console.log('error',err)
-            }
+          }
+          catch(err){
+              console.log('error',err)
+          }
         },
         edit(id){
             this.$router.push({
-                path: '/admin/real-estates/'+id+'/edit',
+                path: '/admin/sellers/'+id+'/edit',
             })           
         },
         confirmation(form){
-            this.confirmationText = form.name
+            this.confirmationText = form.email
             let res = window.confirm(this.confirmationText + 'を削除してよろしいでしょうか？');
 
             if(res){
-                this.delete(form.id, form.index)
+                this.deleteUser(form.id, form.index)
             }
         },
-        async delete(id, index){
-            const res = await this.$axios.$delete('/real-estates/delete', {params: {'id': id}})
+        async deleteUser(id, index){
+            await this.$axios.$post('/admin/sellers/delete', {'id':id})
             this.contents.splice(index, 1)
         }
     }

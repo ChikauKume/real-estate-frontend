@@ -1,6 +1,6 @@
 <template>
     <div class="p-10">
-        <div class="text-2xl mb-5">顧客追加</div>
+        <div class="text-2xl mb-5">買主編集</div>
 
         <UsersValidation :errors = errors />
 
@@ -54,7 +54,7 @@
         <div class="mt-5 w-1/2 flex justify-center">
             <button 
                 type="button"
-                @click="create"
+                @click="update"
                 class="
                 flex justify-center
                 w-full
@@ -63,7 +63,7 @@
                 bg-orange 
                 text-center p-3 rounded"
             >
-            上記の内容で作成する
+            上記の内容で更新する
             </button> 
         </div>
     </div>
@@ -80,25 +80,34 @@ export default {
     data () {
         return {
             form:{
-                'name': 'sample user',
-                'email': 'sample@email.com',
-                'password': 'password',
-                'user_type_id': 2,
-                'user_status_id': 2,
+                'id': '',
+                'name': '',
+                'email': '',
+                'password': '',
+                'user_type_id': null,
+                'user_status_id': null
             },
             statuses: [],
         }
     },
     methods: {
-        async create(){
+        async getData(){
             try{
-                const res = await this.$axios.$post('/admin/users/create', this.form)
-                console.log('res', res)
-
+                const res = await this.$axios.$get('/admin/buyers/'+ this.$route.params.id)
+                this.form = res.data
+                this.form.user_status_id = res.data.user_status.id
+            }
+           catch(err){
+                console.log(err)
+            }
+        },
+        async update(){
+            try{
+                const res = await this.$axios.$post('/admin/buyers/update', this.form)
 
                 this.$router.push({
-                    path: '/admin/users',
-                    query :{ success_message: '顧客の登録が完了いたしました'},
+                    path: '/admin/buyers',
+                    query :{ success_message: '買主の編集が完了いたしました'},
                 })
 
             }
@@ -109,7 +118,7 @@ export default {
         },
         async getStatus(){
             try {
-                const res = await this.$axios.$get('/admin/users/getStatus')
+                const res = await this.$axios.$get('/admin/buyers/getStatus')
                 this.statuses = res
             }
             catch(err){
@@ -118,6 +127,7 @@ export default {
         },
     },
     mounted(){
+        this.getData()
         this.getStatus()
     },
 }

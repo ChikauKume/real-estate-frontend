@@ -89,11 +89,7 @@ export default {
     methods:{
         async submit(){
             try{
-            const res = await this.$auth.login({data: this.form})
-                console.log('res',res)
-                // this.$router.push({
-                //     path: this.$route.query.redirect || '/'
-                // })
+                const res = await this.$auth.login({data: this.form})
             }
             catch(err){
                 console.log(err)

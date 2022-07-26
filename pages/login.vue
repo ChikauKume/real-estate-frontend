@@ -79,11 +79,18 @@ export default {
         async submit(){
             try{
                 const res = await this.$auth.login({data: this.form})
-                console.log('res',res)
-
-                this.$router.push({
-                    path: '/dashboard',
-                })
+                let type = res.data.data.user_type_id
+                
+                if(type == 2){
+                    this.$router.push({
+                        path: '/buyers/dashboard',
+                    })
+                }
+                if(type == 3){
+                    this.$router.push({
+                        path: '/sellers/dashboard',
+                    })
+                }
             }
             catch(err){
                 console.log(err)

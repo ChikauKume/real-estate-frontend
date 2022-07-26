@@ -28,7 +28,7 @@
             </GmapMap>
         </div>
         <div class="desc px-6">
-            <div class="title text-3xl mb-5 flex">
+            <div class="title text-2xl mb-5 flex">
                 <img src="/image/home.png" class="rounded-md outline outline-1 w-1/6">
                 <span class="flex items-center ml-5">住まいを探す</span>
             </div>
@@ -163,7 +163,6 @@ export default {
         async getMapData(){
             try {
                 const res = await this.$axios.$get('/real-estates/map')
-                console.log('res',res.data)
                 this.marker_items = res.data
             }
             catch(err){

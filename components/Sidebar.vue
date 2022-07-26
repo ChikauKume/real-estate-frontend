@@ -181,9 +181,6 @@
         <div class="banner flex flex-col space-y-4 mt-10">
             <img src="/image/banner.jpeg">
             <img src="/image/banner-3.gif">
-            <img src="/image/banner-2.png">
-            <img src="/image/banner.jpeg">
-            <img src="/image/banner-3.gif">
         </div>
 
     </div>

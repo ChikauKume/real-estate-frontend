@@ -15,6 +15,8 @@
         <div v-if="errors.real_estate_layout_id">{{ errors.real_estate_layout_id[0] }}</div>
         <div v-if="errors.age">{{ errors.age[0] }}</div>
         <div v-if="errors.favorite">{{ errors.favorite[0] }}</div>
+        <div v-if="errors.pic">{{ errors.pic[0] }}</div>
+        <div v-if="errors.email">{{ errors.email[0] }}</div>
         <div v-if="errors.error">{{ errors.error[0] }}</div>
     </div>
 </template>

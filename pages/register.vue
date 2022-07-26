@@ -156,15 +156,6 @@ export default {
        async submit(){
             try{
                 const res = await this.$axios.$post('/register', this.form)
-                console.log(res)
-                
-                // await this.$auth.login({
-                //     data: {
-                //         email: this.form.email,
-                //         password: this.form.password,
-                //     }
-                // })
-
                 this.submitSMS();
                 this.$router.push({
                     path: '/verify',
@@ -174,11 +165,9 @@ export default {
                     },
                     props: true
                 })
-                // window.location = "http://localhost:3000";
 
             }
             catch(err){
-
                 console.log(err)
             }
         },
@@ -186,7 +175,6 @@ export default {
         async submitSMS(){
             try{
                 const res = await this.$axios.$post('/sendSMS',this.form)
-                console.log('res', res)
             }
              catch(err){
                 console.log('error',err)
